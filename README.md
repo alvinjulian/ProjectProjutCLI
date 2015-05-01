@@ -8,7 +8,7 @@ Disiapkan yang GUI dan CLI. (Logic sama cuma beda dikit)
 Segala perubahan yang dilakukan di dalam github harap dituliskan ke file ini agar dapat dikembangkan dengan jauh lebih mudah. Trims
 
 Bug list :
-- Masih ga bisa milih menu
+- 
 -
 -
 -
@@ -17,7 +17,7 @@ Bug list :
 -
 
 Done : 
-- Menu Utama dan Buku udah jadi
+- Menu Utama, Murid dan Buku udah jadi
 -
 -
 -

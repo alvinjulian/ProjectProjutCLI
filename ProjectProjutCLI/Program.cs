@@ -9,7 +9,7 @@ namespace ProjectProjutCLI
 {
     class Program
     {   
-        static void Main()
+        public static void Main()
         {
                 printMenu();
                 Int16 pilih = 0;

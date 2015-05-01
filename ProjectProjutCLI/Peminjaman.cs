@@ -12,5 +12,9 @@ namespace ProjectProjutCLI
         {
 
         }
+        static void printmenuPeminjaman()
+        {
+
+        }
     }
 }
