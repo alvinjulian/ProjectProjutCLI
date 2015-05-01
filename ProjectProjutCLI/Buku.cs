@@ -50,5 +50,20 @@ namespace ProjectProjutCLI
             Console.WriteLine("5. Kembali ke menu utama\n");
             Console.Write("Masukan pilihan anda : ");
         }
+
+        public static void tampilkanBukuS() //Tampilkan semua buku
+        {
+
+        }
+
+        public static void tampilkanBukuJudul() //Tampilkan buku judul tertentu
+        {
+
+        }
+
+        public static void tampilkanBukuPengarang() //Tampilkan buku pengarang tertentu
+        {
+
+        }
     }
 }
