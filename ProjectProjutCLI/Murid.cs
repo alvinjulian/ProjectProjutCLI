@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectProjutCLI
 {
     class Murid
     {
-        public static void Main()
+        public static void MainMurid()
         {
             int pilihan = 0;
             do {
-                menuMurid();
+                printmenuMurid();
                 pilihan = int.Parse(Console.ReadLine());
                 if (pilihan > 0 && pilihan <6)
                 {
@@ -24,12 +26,16 @@ namespace ProjectProjutCLI
             switch(pilihan)
             {
                 case 1:
+                    tampilkanMurids();
                     break;
                 case 2:
+                    tampilkanMuridL();
                     break;
                 case 3:
+                    tampilkanMuridP();
                     break;
                 case 4:
+                    menuTambahmurid();
                     break;
                 case 5:
                     Program.Main();
@@ -37,7 +43,7 @@ namespace ProjectProjutCLI
             }
         }
 
-        static void menuMurid()
+        static void printmenuMurid()
         {
             Console.Clear();
             Console.WriteLine("\t\t\t\tMenu Murid");
@@ -51,19 +57,137 @@ namespace ProjectProjutCLI
 
         static void menuTambahmurid()
         {
+            int pilihan = 0;
+            do{
+                printmenuTambahmurid();
+                pilihan = int.Parse(Console.ReadLine());
+                if(pilihan >0 && pilihan <3)
+                {
+                    continue;
+                }
+            } while (pilihan < 1 || pilihan > 2);
+            switch(pilihan)
+            {
+                case 1:
+                    menuMasukanmurid();
+                    break;
+                case 2:
+                    MainMurid();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        static void printmenuTambahmurid()
+        {
             Console.Clear();
             Console.WriteLine("\t\t\t\tMenu Murid");
             Console.WriteLine("\t\t\t\t==========\n");
             Console.WriteLine("1. Masukan data murid\n");
             Console.WriteLine("2. Kembali ke menu utama\n");
+            Console.Write("Masukan pilihan anda : ");
         }
 
         static void menuMasukanmurid()
         {
+            int nim = 0;
+            string nama = "";
+            string jenisK = "";
+            string email = "";
             Console.Clear();
             Console.WriteLine("\t\t\t\tMasukan Data Murid");
             Console.WriteLine("\t\t\t\t==================\n");
+            do{
+                Console.Write("Masukan NIM : ");
+                nim = int.Parse(Console.ReadLine());
+                if(nim.ToString().Length == 5)
+                {
+                    continue;
+                }
+                Console.WriteLine("NIM harus 6 digit!\n");
+            }while(nim.ToString().Length <6 || nim.ToString().Length > 6);
 
+            do{
+                Console.Write("Masukan Nama : ");
+                nama = Console.ReadLine();
+                if(IsDigitsOnly(nama)==false)
+                {
+                    continue;
+                }
+                Console.WriteLine("Nama tidak valid!");
+            }while(IsDigitsOnly(nama)==true);
+            
+            do{
+                Console.Write("Masukan Jenis Kelamin (L/P) : ");
+                jenisK = Console.ReadLine();
+                if(jenisK.ToUpper().Trim() =="L\n" || jenisK.ToUpper().Trim() =="P\n")
+                {
+                    continue;
+                }
+            } while (jenisK.ToUpper().Trim() != "L" || jenisK.ToUpper().Trim() != "P");
+
+            do{
+                Console.Write("Masukan Email : ");
+                email = Console.ReadLine();
+                if(emailIsValid(email)==true)
+                {
+                    continue;
+                }
+                Console.WriteLine("Email Tidak Valid!\n");
+            }while(emailIsValid(email)==false);
+
+            //codingan nulis ke file
+
+            Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
+            Console.ReadKey();
+            MainMurid();
+        }
+
+        public static bool emailIsValid(string email)
+        {
+            string expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, string.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
+        static void tampilkanMurids()
+        {
+            //method untuk tampilkan semua murid
+        }
+
+        static void tampilkanMuridL()
+        {
+            //method untuk tampilkan murid laki
+        }
+
+        static void tampilkanMuridP()
+        {
+            //method untuk tampilakn murid perempuan
         }
     }
 }

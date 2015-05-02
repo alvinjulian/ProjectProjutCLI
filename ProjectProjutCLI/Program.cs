@@ -18,11 +18,13 @@ namespace ProjectProjutCLI
                 switch (pilih)
                 {
                     case 1:
+                        Murid.MainMurid();
                         break;
                     case 2:
-                        Buku.Main();
+                        Buku.MainBuku();
                         break;
                     case 3:
+                        Peminjaman.MainPeminjaman();
                         break;
                     case 4:
                         Environment.Exit(0);

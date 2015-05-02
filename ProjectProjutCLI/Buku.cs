@@ -9,7 +9,7 @@ namespace ProjectProjutCLI
 {
     class Buku
     {
-        public static void Main()
+        public static void MainBuku()
         {
             int pilihan = 0;
             do{
@@ -24,12 +24,16 @@ namespace ProjectProjutCLI
             switch(pilihan)
             {
                 case 1:
+                    tampilkanBukuS();
                     break;
                 case 2:
+                    tampilkanBukuPinjam();
                     break;
                 case 3:
+                    tampilkanBukuJudul();
                     break;
                 case 4:
+                    tampilkanBukuPengarang();
                     break;
                 case 5 :
                     Program.Main();
@@ -53,17 +57,66 @@ namespace ProjectProjutCLI
 
         public static void tampilkanBukuS() //Tampilkan semua buku
         {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tList Buku");
+            Console.WriteLine("\t\t\t\t=========\n");
 
+            //Codingan baca dari file atau ambil langsung dri function
+
+            Console.WriteLine("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadKey();
+            MainBuku();
         }
 
         public static void tampilkanBukuJudul() //Tampilkan buku judul tertentu
         {
-
+            string keywordJudul = "";
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tList Buku berdasarkan judul");
+            Console.WriteLine("\t\t\t\t===========================\n");
+            Console.Write("Masukkan kata-kata judul buku:");
+            do
+            {
+                keywordJudul = Console.ReadLine();
+                if(keywordJudul != "")
+                {
+                    continue;
+                }
+            }
+            while (keywordJudul == "");
+            //Coding untuk search berdasarkan judul
         }
 
         public static void tampilkanBukuPengarang() //Tampilkan buku pengarang tertentu
         {
+            string keywordPengarang = "";
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tList Buku berdasarkan pengarang");
+            Console.WriteLine("\t\t\t\t===============================\n");
+            Console.Write("Masukkan nama pengarang:");
+            do
+            {
+                keywordPengarang = Console.ReadLine();
+                if (keywordPengarang != "")
+                {
+                    continue;
+                }
+            }
+            while (keywordPengarang == "");
+            //Coding untuk search berdasarkan pengarang
+        }
+        
+        public static void tampilkanBukuPinjam()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tList Buku yang dipinjam");
+            Console.WriteLine("\t\t\t\t=======================\n");
 
+            //codingan listing buku yang dipinjam
+
+            Console.WriteLine("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadKey();
+            MainBuku();
         }
     }
 }
