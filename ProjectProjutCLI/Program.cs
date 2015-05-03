@@ -13,7 +13,7 @@ namespace ProjectProjutCLI
         {
                 printMenu();
                 Int16 pilih = 0;
-                Console.WriteLine("Masukan pilihan anda : ");
+                Console.Write("Masukan pilihan anda : ");
                 pilih = Convert.ToInt16(Console.ReadLine());
                 switch (pilih)
                 {

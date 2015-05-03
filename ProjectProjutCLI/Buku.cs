@@ -63,7 +63,7 @@ namespace ProjectProjutCLI
 
             //Codingan baca dari file atau ambil langsung dri function
 
-            Console.WriteLine("Klik sembarang untuk kembali ke menu buku...");
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
             MainBuku();
         }
@@ -114,7 +114,7 @@ namespace ProjectProjutCLI
 
             //codingan listing buku yang dipinjam
 
-            Console.WriteLine("Klik sembarang untuk kembali ke menu buku...");
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
             MainBuku();
         }
