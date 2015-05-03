@@ -53,6 +53,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("3. Tampilkan murid perempuan\n");
             Console.WriteLine("4. Tambah murid\n");
             Console.WriteLine("5. Kembali ke menu utama");
+            Console.Write("Masukan pilihan anda : ");
         }
 
         static void menuTambahmurid()
@@ -106,7 +107,7 @@ namespace ProjectProjutCLI
                     continue;
                 }
                 Console.WriteLine("NIM harus 6 digit!\n");
-            }while(nim.ToString().Length <6 || nim.ToString().Length > 6);
+            }while(nim.ToString().Length <6 && nim.ToString().Length > 6);
 
             do{
                 Console.Write("Masukan Nama : ");

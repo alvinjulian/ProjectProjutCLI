@@ -60,7 +60,45 @@ namespace ProjectProjutCLI
 
         static void pinjamBuku()
         {
+            int nim;
+            string judul;
+            string edisi;
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tMenu Pinjam Buku");
+            Console.WriteLine("\t\t\t\t================\n");
+            Console.Write("Masukan judul buku : ");
+            judul = Console.ReadLine();
+            Console.Write("Masukan edisi buku : ");
+            edisi = Console.ReadLine();
 
+            //coding cek buku apakah available
+
+            //jika buku not available
+            Console.WriteLine("Buku tidak bisa dipinjam karena lagi dipinjam orang lain");
+            Console.WriteLine("Tekan sembarang untuk kembali ke menu...");
+            Console.Read();
+            MainPeminjaman();
+
+            //jika buku available
+            Console.Write("Masukan NIM mahasiswa : ");
+            nim = int.Parse(Console.ReadLine());
+                //jika nim tidak valid
+                Console.WriteLine("Tidak ada mahaiswa dengan NIM tersebut!");
+                Console.Write("Tekan sembarang untuk kembali ke menu...");
+                Console.Read();
+                MainPeminjaman();
+
+                //jika sudah meminjam 5 buku
+                Console.WriteLine("Maaf mahasiswa ini sudah meminjam 5 buku");
+                Console.Write("Tekan sembarang untuk kembali ke menu...");
+                Console.Read();
+                MainPeminjaman();
+
+                //jika telat mengembalikan buku
+                Console.WriteLine("Maaf, mahasiswa ini ada buku yang sudah overdue belum dikembalikan");
+                Console.Write("Tekan sembarang untuk kembali ke menu...");
+                Console.Read();
+                MainPeminjaman();
         }
 
         static void lihatOverdue()
