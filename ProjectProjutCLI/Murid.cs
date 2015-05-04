@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -191,6 +192,16 @@ namespace ProjectProjutCLI
         static void tampilkanMurids()
         {
             //method untuk tampilkan semua murid
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tList Murid");
+            Console.WriteLine("\t\t\t\t=========\n");
+
+            //Codingan baca dari file atau ambil langsung dri function
+            readFilemurid();
+
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadKey();
+            MainMurid();
         }
 
         static void tampilkanMuridL()
@@ -201,6 +212,25 @@ namespace ProjectProjutCLI
         static void tampilkanMuridP()
         {
             //method untuk tampilakn murid perempuan
+        }
+        static void readFilemurid()
+        {
+            int counter = 0;
+            string line;
+
+            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\student.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+                counter++;
+            }
+            sr.Close();
+
+            // Suspend the screen.
+            Console.ReadLine();
+
         }
     }
 }
