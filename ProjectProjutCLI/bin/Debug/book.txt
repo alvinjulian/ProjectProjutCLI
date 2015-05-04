@@ -1,15 +1,15 @@
-C++ Concurrency in Action							Anthony Williams											1	-	-
-C++ Primer	               							Stanley Lippman, Josée Lajoie, Barbara Moo					5	26 April 2015	100020
-C++ Programming Language							Bjarne Stroustrup 											4	21 Mei 2015		100025
-Effective Java 										Joshua Bloch												2	3 Mei 2015		100020
-Head First Design Patterns  						Eric Freeman, Elisabeth Robson, Bert Bates, Kathy Sierra	1	3 Juni 2015		100025
-Head First Java										Kathy Sierra, Bert Bates									2	1 Mei 2015		100003
-Head First Object-Oriented Analysis and Design 		Brett McLaughlin, Gary Pollice, David West					1	13	Mei 2015	100020
-Java Concurrency in Practice						Joshua Bloch, Doug Lea and team								1	2 Juni 2015		100020
-Java Generics and Collections 						Maurice Naftalin, Philip Wadler								1	20 April 2015	100026	
-Java Performance									Charlie Hunt, Binu John										1	-	-
-Java Puzzlers: Traps, Pitfalls, and Corner Cases  	Joshun Bloch, Neal Gafter									1	23 April 2015	100002	
-Real-Time C++										Chris Kormanyos												1	23 Mei 2015		100020
-Secure Coding in C and C++ 							Robert Seacord												2	-	-
-The C++ Standard library							Nicolai Josuttis											2	-	-
-Thinking in Java 									Bruce Eckel													4	5 Mei 2015		100002
+C++ Concurrency in Action				Anthony Williams						1	-	-
+C++ Primer	               				Stanley Lippman, Josée Lajoie, Barbara Moo			5	26 April 2015	100020
+C++ Programming Language				Bjarne Stroustrup 						4	21 Mei 2015		100025
+Effective Java 						Joshua Bloch							2	3 Mei 2015		100020
+Head First Design Patterns  				Eric Freeman, Elisabeth Robson, Bert Bates, Kathy Sierra	1	3 Juni 2015		100025
+Head First Java						Kathy Sierra, Bert Bates					2	1 Mei 2015		100003
+Head First Object-Oriented Analysis and Design 		Brett McLaughlin, Gary Pollice, David West			1	13	Mei 2015	100020
+Java Concurrency in Practice				Joshua Bloch, Doug Lea and team					1	2 Juni 2015		100020
+Java Generics and Collections 				Maurice Naftalin, Philip Wadler					1	20 April 2015	100026	
+Java Performance					Charlie Hunt, Binu John						1	-	-
+Java Puzzlers: Traps, Pitfalls, and Corner Cases  	Joshun Bloch, Neal Gafter					1	23 April 2015	100002	
+Real-Time C++						Chris Kormanyos							1	23 Mei 2015		100020
+Secure Coding in C and C++ 				Robert Seacord							2	-	-
+The C++ Standard library				Nicolai Josuttis						2	-	-
+Thinking in Java 					Bruce Eckel							4	5 Mei 2015		100002
