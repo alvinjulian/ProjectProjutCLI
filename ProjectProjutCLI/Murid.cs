@@ -94,7 +94,7 @@ namespace ProjectProjutCLI
         {
             int nim = 0;
             string nama = "";
-            string jenisK = "";
+            char jenisK = ' ' ;
             string email = "";
             Console.Clear();
             Console.WriteLine("\t\t\t\tMasukan Data Murid");
@@ -102,12 +102,13 @@ namespace ProjectProjutCLI
             do{
                 Console.Write("Masukan NIM : ");
                 nim = int.Parse(Console.ReadLine());
-                if(nim.ToString().Length == 5)
+                //dirubah jadi bentuk int diantara 1 jt hinga 999999
+                if(nim>=100000 && nim<1000000)
                 {
                     continue;
                 }
                 Console.WriteLine("NIM harus 6 digit!\n");
-            }while(nim.ToString().Length <6 && nim.ToString().Length > 6);
+            }while(nim<=100000 || nim>=1000000);
 
             do{
                 Console.Write("Masukan Nama : ");
@@ -118,7 +119,6 @@ namespace ProjectProjutCLI
                 }
                 Console.WriteLine("Nama tidak valid!");
             }while(IsDigitsOnly(nama)==true);
-            
             do{
                 Console.Write("Masukan Jenis Kelamin (L/P) : ");
                 jenisK = Console.ReadLine();
