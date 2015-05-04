@@ -119,14 +119,26 @@ namespace ProjectProjutCLI
                 }
                 Console.WriteLine("Nama tidak valid!");
             }while(IsDigitsOnly(nama)==true);
-            do{
+            ///memasukan jenis kelamin 
+            do
+            {
                 Console.Write("Masukan Jenis Kelamin (L/P) : ");
-                jenisK = Console.ReadLine();
-                if(jenisK.ToUpper().Trim() =="L" || jenisK.ToUpper().Trim() =="P")
+                jenisK = Console.ReadKey().KeyChar ;
+                jenisK = char.ToUpper(jenisK);
+                Console.WriteLine();
+                switch (jenisK)
                 {
-                    continue;
+                    case 'L':       
+                        continue;
+                        
+                    case 'P': 
+                        continue;
+                        
+                    default:
+                        jenisK = ' ';
+                        break;
                 }
-            } while (jenisK.ToUpper().Trim() != "L" || jenisK.ToUpper().Trim() != "P");
+            } while (jenisK == ' ');
 
             do{
                 Console.Write("Masukan Email : ");
