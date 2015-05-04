@@ -62,6 +62,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
+            readFile();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
@@ -117,6 +118,27 @@ namespace ProjectProjutCLI
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
             MainBuku();
+        }
+
+        static void readFile()
+        {
+            int counter = 0;
+            string line;
+
+            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+                counter++;
+            }
+            sr.Close();
+
+            // Suspend the screen.
+            Console.ReadLine();
+
+            Console.Read();
         }
     }
 }
