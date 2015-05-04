@@ -62,7 +62,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
-            readFile();
+            readFilebuku();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
@@ -120,7 +120,7 @@ namespace ProjectProjutCLI
             MainBuku();
         }
 
-        static void readFile()
+        static void readFilebuku()
         {
             int counter = 0;
             string line;
@@ -138,7 +138,6 @@ namespace ProjectProjutCLI
             // Suspend the screen.
             Console.ReadLine();
 
-            Console.Read();
         }
     }
 }

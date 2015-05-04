@@ -8,7 +8,7 @@
 *.sln.docstates
 
 # Build results
-[Dd]ebug/
+#[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -16,8 +16,14 @@ x64/
 x86/
 build/
 bld/
-[Bb]in/
+#[Bb]in/
 [Oo]bj/
+*.exe
+*.exe.config
+*.pdb
+*.vshost.exe
+*.vshost.exe.config
+*.vshost.exe.manifest
 
 # Roslyn cache directories
 *.ide/
