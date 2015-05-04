@@ -122,7 +122,7 @@ namespace ProjectProjutCLI
             do{
                 Console.Write("Masukan Jenis Kelamin (L/P) : ");
                 jenisK = Console.ReadLine();
-                if(jenisK.ToUpper().Trim() =="L\n" || jenisK.ToUpper().Trim() =="P\n")
+                if(jenisK.ToUpper().Trim() =="L" || jenisK.ToUpper().Trim() =="P")
                 {
                     continue;
                 }

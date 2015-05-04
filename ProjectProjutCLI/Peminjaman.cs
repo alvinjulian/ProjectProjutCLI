@@ -103,7 +103,9 @@ namespace ProjectProjutCLI
 
         static void lihatOverdue()
         {
-
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tLihat Pinjaman Overdue");
+            Console.WriteLine("\t\t\t\t======================\n");
         }
 
         static void tagihOverdue()
