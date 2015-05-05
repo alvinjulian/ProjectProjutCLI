@@ -1,17 +1,22 @@
 ﻿using System;
-using System.IO;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Reflection;
-using System.ComponentModel.DataAnnotations;
 
 namespace ProjectProjutCLI
 {
     class Murid
     {
+
+
+
         public static void MainMurid()
         {
             int pilihan = 0;
@@ -215,6 +220,7 @@ namespace ProjectProjutCLI
         {
             //method untuk tampilakn murid perempuan
         }
+
         /*static void readFilemurid()
         {
             int counter = 0;
@@ -237,22 +243,23 @@ namespace ProjectProjutCLI
 
         static void splitString()
         {
-            char[] delimiterChars = { '\t' };
             int counter = 0;
             string line;
-            string[] words;
+
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
 
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\student.txt";
             StreamReader sr = new StreamReader(file);
             while ((line = sr.ReadLine()) != null)
             {
-                words = line.Split(delimiterChars);
-                foreach(string s in words)
+                string[] result = rgx.Split(line);
+                for (int ctr = 0; ctr < result.Length; ctr++)
                 {
-                    Console.Write(s);
-                    Console.Read();
+                    Console.WriteLine("{0}", result[ctr]);
                 }
+                Console.Read();
                 //Console.WriteLine(line);
                 counter++;
             }
