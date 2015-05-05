@@ -62,6 +62,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
+            Console.WriteLine("Judul Buku\t\t\t");
             readFilebuku();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
@@ -134,10 +135,8 @@ namespace ProjectProjutCLI
                 counter++;
             }
             sr.Close();
-
             // Suspend the screen.
             Console.ReadLine();
-
         }
     }
 }
