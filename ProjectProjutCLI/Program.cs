@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace ProjectProjutCLI
     {   
         public static void Main()
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
                 printMenu();
                 Int16 pilih = 0;
                 Console.Write("Masukan pilihan anda : ");
@@ -18,7 +21,7 @@ namespace ProjectProjutCLI
                 switch (pilih)
                 {
                     case 1:
-                        Murid.MainMurid();
+                        Murid_BAK.MainMurid();
                         break;
                     case 2:
                         Buku.MainBuku();
@@ -44,5 +47,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("3. Menu Peminjaman\n");
             Console.WriteLine("4. Exit Program\n");
         }
+
+        public DataTable dt = new DataTable();
     }
 }

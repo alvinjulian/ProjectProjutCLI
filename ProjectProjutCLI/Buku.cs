@@ -3,25 +3,29 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ProjectProjutCLI
 {
     class Buku
     {
+        
         public static void MainBuku()
         {
-            int pilihan = 0;
+            int pilih = 0;
+            menuBuku();
             do{
-                menuBuku();
-                pilihan = int.Parse(Console.ReadLine());
-                if(pilihan > 0 && pilihan < 6)
+                Console.Write("Masukan pilihan anda : ");
+                pilih = Convert.ToInt32(Console.ReadLine());
+                if(pilih > 0 && pilih < 6)
                 {
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
-            }while(pilihan <1 && pilihan >5);
-            switch(pilihan)
+            }while(pilih <1 && pilih >5);
+            switch(pilih)
             {
                 case 1:
                     tampilkanBukuS();
@@ -52,7 +56,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("3. Tampilkan buku dengan judul tertentu\n");
             Console.WriteLine("4. Tampilan buku dengan pengarang tertentu\n");
             Console.WriteLine("5. Kembali ke menu utama\n");
-            Console.Write("Masukan pilihan anda : ");
+            
         }
 
         public static void tampilkanBukuS() //Tampilkan semua buku
@@ -66,7 +70,7 @@ namespace ProjectProjutCLI
             readFilebuku();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
-            Console.ReadKey();
+            Console.ReadLine();
             MainBuku();
         }
 
@@ -126,17 +130,27 @@ namespace ProjectProjutCLI
             int counter = 0;
             string line;
 
-            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
             StreamReader sr = new StreamReader(file);
             while ((line = sr.ReadLine()) != null)
             {
-                Console.WriteLine(line);
+                string[] result = rgx.Split(line);
+                    //Console.WriteLine("{0}", result[ctr]);
+                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
+                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                Console.WriteLine();
+                //Console.Read();
+                //Console.WriteLine(line);
                 counter++;
             }
             sr.Close();
-            // Suspend the screen.
-            Console.ReadLine();
         }
     }
 }
