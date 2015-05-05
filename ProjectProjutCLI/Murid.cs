@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectProjutCLI
@@ -197,7 +198,8 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
-            readFilemurid();
+            //readFilemurid();
+            splitString();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadKey();
@@ -213,7 +215,7 @@ namespace ProjectProjutCLI
         {
             //method untuk tampilakn murid perempuan
         }
-        static void readFilemurid()
+        /*static void readFilemurid()
         {
             int counter = 0;
             string line;
@@ -231,6 +233,30 @@ namespace ProjectProjutCLI
             // Suspend the screen.
             Console.ReadLine();
 
+        }*/
+
+        static void splitString()
+        {
+            char[] delimiterChars = { '\t' };
+            int counter = 0;
+            string line;
+            string[] words;
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\student.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                words = line.Split(delimiterChars);
+                foreach(string s in words)
+                {
+                    Console.Write(s);
+                    Console.Read();
+                }
+                //Console.WriteLine(line);
+                counter++;
+            }
+            sr.Close();
         }
     }
 }
