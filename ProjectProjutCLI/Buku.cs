@@ -66,7 +66,6 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
-            Console.WriteLine("Judul Buku\t\t\t");
             readFilebuku();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
@@ -91,6 +90,7 @@ namespace ProjectProjutCLI
             }
             while (keywordJudul == "");
             //Coding untuk search berdasarkan judul
+            lookJudul(keywordJudul);
         }
 
         public static void tampilkanBukuPengarang() //Tampilkan buku pengarang tertentu
@@ -151,6 +151,16 @@ namespace ProjectProjutCLI
                 counter++;
             }
             sr.Close();
+        }
+
+        static string lookJudul(string s)
+        {
+            string line;
+            string pattern;
+
+            pattern = s;
+
+            return s;
         }
     }
 }

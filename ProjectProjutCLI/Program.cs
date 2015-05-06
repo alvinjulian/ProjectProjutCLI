@@ -21,7 +21,7 @@ namespace ProjectProjutCLI
                 switch (pilih)
                 {
                     case 1:
-                        Murid_BAK.MainMurid();
+                        Murid.MainMurid();
                         break;
                     case 2:
                         Buku.MainBuku();
