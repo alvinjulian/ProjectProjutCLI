@@ -70,9 +70,9 @@ namespace ProjectProjutCLI
             judul = Console.ReadLine();
             Console.Write("Masukan edisi buku : ");
             edisi = Console.ReadLine();
-            
-            //coding cek buku apakah available
 
+            //coding cek buku apakah available
+            
             //jika buku not available
             Console.WriteLine("Buku tidak bisa dipinjam karena lagi dipinjam orang lain");
             Console.WriteLine("Tekan sembarang untuk kembali ke menu...");
@@ -106,6 +106,7 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tLihat Pinjaman Overdue");
             Console.WriteLine("\t\t\t\t======================\n");
+            Console.WriteLine("Judul\t Pengarang\t Edisi\t Tanggal Pinjam\t NIM Peminjam ");
 
             Console.Write("Tekan sembarang untuk kembali ke menu...");
             Console.Read();
