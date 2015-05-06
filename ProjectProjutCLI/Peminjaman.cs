@@ -115,12 +115,23 @@ namespace ProjectProjutCLI
 
         static void tagihOverdue()
         {
-
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tTagih Pinjaman Overdue");
+            Console.WriteLine("\t\t\t\t======================\n");
+            Console.WriteLine("Nama Peminjam  : ");
+            Console.WriteLine("Judul Buku     : ");
+            Console.WriteLine("Penulis Buku   : ");
+            Console.WriteLine("Edisi          : ");
+            Console.WriteLine("Hari terlambat : ");
+            Console.WriteLine("Jumlah Denda   : ");
         }
 
         static void tagihMahasiswa()
         {
-
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tTagih Pinjaman Overdue");
+            Console.WriteLine("\t\t\t\t======================\n");
+            Console.WriteLine("Masukan Nama Mahasiswa yang ingin ditagih /n Nama Mahasiswa: ");
         }
 
         static void kembaliBuku()
