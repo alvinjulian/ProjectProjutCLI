@@ -26,41 +26,36 @@ namespace ProjectProjutCLI
         /// </summary>
         public static void MainMurid()
         {
-            Int16 pilihMuridMenu = 0;
+            string pilihMuridMenu;
 
             do
             {
                 printmenuMurid();
-                Console.Write("Masukan pilihan anda : ");
-                pilihMuridMenu = Convert.ToInt16(Console.ReadLine());
-                if (pilihMuridMenu > 0 && pilihMuridMenu < 6)
+                pilihMuridMenu = Console.ReadLine();
+                switch (pilihMuridMenu)
                 {
-                    continue;
+                    case "1":
+                        tampilkanMurids();
+                        break;
+                    case "2":
+                        tampilkanMuridL();
+                        break;
+                    case "3":
+                        tampilkanMuridP();
+                        break;
+                    case "4":
+                        menuTambahmurid();
+                        break;
+                    case "5":
+                        Program.Main();
+                        break;
+                    default :
+                        Console.WriteLine("Pilihan yang anda masukan salah!");
+                        Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                        Console.ReadLine();
+                        break;
                 }
-                Console.WriteLine("Pilihan yang anda masukan salah!");
-                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
-                Console.ReadLine();
-            } while (pilihMuridMenu < 1 || pilihMuridMenu > 5);
-
-            switch (pilihMuridMenu)
-            {
-                case 1:
-                    tampilkanMurids();
-                    break;
-                case 2:
-                    tampilkanMuridL();
-                    break;
-                case 3:
-                    tampilkanMuridP();
-                    break;
-                case 4:
-                    menuTambahmurid();
-                    break;
-                case 5:
-                    Program.Main();
-                    break;
-            }
-            
+            } while (true);
         }
 
         static void printmenuMurid()
@@ -78,30 +73,26 @@ namespace ProjectProjutCLI
 
         static void menuTambahmurid()
         {
-            int pilihan = 0;
+            string pilihan;
             do
             {
                 printmenuTambahmurid();
-                pilihan = int.Parse(Console.ReadLine());
-                if (pilihan > 0 && pilihan < 3)
+                pilihan = Console.ReadLine();
+                switch (pilihan)
                 {
-                    continue;
-                } 
-                Console.WriteLine("Pilihan yang anda masukan salah!");
-                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
-                Console.ReadLine();
-            } while (pilihan < 1 || pilihan > 2);
-            switch (pilihan)
-            {
-                case 1:
-                    menuMasukanmurid();
-                    break;
-                case 2:
-                    MainMurid();
-                    break;
-                default:
-                    break;
-            }
+                    case "1":
+                        menuMasukanmurid();
+                        break;
+                    case "2":
+                        MainMurid();
+                        break;
+                    default:
+                        Console.WriteLine("Pilihan yang anda masukan salah!");
+                        Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                        Console.ReadLine();
+                        break;
+                }
+            } while (true);
         }
 
         static void printmenuTambahmurid()
