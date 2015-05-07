@@ -266,16 +266,14 @@ namespace ProjectProjutCLI
             while ((line = sr.ReadLine()) != null)
             {
                 string[] result = rgx.Split(line);
-                for (int ctr = 0; ctr < result.Length; ctr++)
-                {
-                    Console.WriteLine("{0}", result[ctr]);
-
-                }
-                Console.Read();
+                //membuat baris list murid
+                Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}",counter+1, result[0], result[1], result[2], result[3]);
+                //Console.Read();
                 //Console.WriteLine(line);
                 counter++;
             }
             sr.Close();
+            Console.ReadLine();
         }
     }
 }
