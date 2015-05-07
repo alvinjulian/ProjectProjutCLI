@@ -24,7 +24,9 @@ namespace ProjectProjutCLI
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
-            }while(pilih <1 && pilih >5);
+                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                Console.ReadLine();
+            }while(pilih <1 || pilih >5);
             switch(pilih)
             {
                 case 1:
@@ -91,6 +93,7 @@ namespace ProjectProjutCLI
             while (keywordJudul == "");
             //Coding untuk search berdasarkan judul
             lookJudul(keywordJudul);
+            MainBuku();
         }
 
         public static void tampilkanBukuPengarang() //Tampilkan buku pengarang tertentu
@@ -121,7 +124,7 @@ namespace ProjectProjutCLI
             //codingan listing buku yang dipinjam
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
-            Console.ReadKey();
+            Console.ReadLine();
             MainBuku();
         }
 

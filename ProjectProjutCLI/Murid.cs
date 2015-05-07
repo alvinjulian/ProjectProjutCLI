@@ -27,6 +27,8 @@ namespace ProjectProjutCLI
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
+                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                Console.ReadLine();
             } while (pilihan < 1 && pilihan > 5);
 
             switch (pilihan)
@@ -72,7 +74,10 @@ namespace ProjectProjutCLI
                 if (pilihan > 0 && pilihan < 3)
                 {
                     continue;
-                }
+                } 
+                Console.WriteLine("Pilihan yang anda masukan salah!");
+                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                Console.ReadLine();
             } while (pilihan < 1 || pilihan > 2);
             switch (pilihan)
             {
@@ -163,7 +168,7 @@ namespace ProjectProjutCLI
             //codingan nulis ke file
 
             Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
-            Console.ReadKey();
+            Console.ReadLine();
             MainMurid();
         }
 
@@ -210,7 +215,7 @@ namespace ProjectProjutCLI
             splitString();
 
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
-            Console.ReadKey();
+            Console.ReadLine();
             MainMurid();
         }
 
