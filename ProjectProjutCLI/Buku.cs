@@ -138,7 +138,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t=======================\n");
 
             //codingan listing buku yang dipinjam
-
+            lookPinjam();
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadLine();
             MainBuku();
@@ -257,7 +257,44 @@ namespace ProjectProjutCLI
 
         static void lookPinjam()
         {
+            string line;
+            int counter = 0;
 
+            string s = "-";
+
+            string pattern = @"\t+";
+
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+
+                //string uji = result[0];
+
+                if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
+                {
+                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
+                    //Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
+                    //Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                    Console.WriteLine();
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                Console.WriteLine("Tidak ada buku yang bisa dipinjam!");
+            }
+            else
+            {
+                Console.WriteLine("Jumlah buku yang bisa dipinjam : {0}", counter);
+            }
         }
     }
 }
