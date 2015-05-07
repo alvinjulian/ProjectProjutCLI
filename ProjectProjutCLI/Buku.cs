@@ -115,13 +115,20 @@ namespace ProjectProjutCLI
             do
             {
                 keywordPengarang = Console.ReadLine();
+                Console.WriteLine();
                 if (keywordPengarang != "")
                 {
                     continue;
                 }
+                Console.WriteLine("Kata kunci judul tidak valid!..");
+                Console.WriteLine("Tekan sembarang untuk memasukan kata kunci....");
+                Console.ReadLine();
             }
             while (keywordPengarang == "");
-            //Coding untuk search berdasarkan pengarang
+            lookPengarang(keywordPengarang);
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadLine();
+            MainBuku();
         }
         
         public static void tampilkanBukuPinjam()
@@ -197,13 +204,60 @@ namespace ProjectProjutCLI
                         Console.WriteLine();
                         counter++;
                     }
-                    //else
-                    //{
-                    //    continue;
-                    //}
-                //}
             }
-            Console.WriteLine("Jumlah buku sesuai kata kunci : {0}", counter);
+            if(counter == 0)
+            {
+                Console.WriteLine("Buku yang dimaksud tidak terdaftar!");
+            }
+            else
+            {
+                Console.WriteLine("Jumlah buku sesuai kata kunci : {0}", counter);
+            }
+        }
+
+        static void lookPengarang(string s)
+        {
+            string line;
+            int counter = 0;
+
+            string pattern = @"\t+";
+
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+
+                //string uji = result[0];
+
+                if (Regex.IsMatch(result[1], s, RegexOptions.IgnoreCase))
+                {
+                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
+                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                    Console.WriteLine();
+                    counter++;
+                }
+            }
+            if (counter == 0)
+            {
+                Console.WriteLine("Pengarang buku yang dimaksud tidak terdaftar!");
+            }
+            else
+            {
+                Console.WriteLine("Jumlah buku sesuai kata kunci : {0}", counter);
+            }
+        }
+
+        static void lookPinjam()
+        {
+
         }
     }
 }
