@@ -14,7 +14,16 @@ namespace ProjectProjutCLI
 {
     class Murid
     {
-
+        //public struct MuridBaru
+        //{
+        //    int nim;
+        //    string nama;
+        //    char jenisK;
+        //    string email;
+        //}
+        /// <summary>
+        /// belum beres bkin masukin file.....
+        /// </summary>
         public static void MainMurid()
         {
             Int16 pilihMuridMenu = 0;
@@ -107,10 +116,11 @@ namespace ProjectProjutCLI
 
         static void menuMasukanmurid()
         {
-            int nim = 0;
-            string nama = "";
-            char jenisK = ' ';
-            string email = "";
+            //ud ada struct diatas
+            int nim;
+            string nama;
+            char jenisK;
+            string email;
             Console.Clear();
             Console.WriteLine("\t\t\t\tMasukan Data Murid");
             Console.WriteLine("\t\t\t\t==================\n");
@@ -169,6 +179,7 @@ namespace ProjectProjutCLI
             } while (emailIsValid(email) == false);
 
             //codingan nulis ke file
+            
 
             Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
@@ -250,25 +261,25 @@ namespace ProjectProjutCLI
             MainMurid();
         }
 
-        /*static void readFilemurid()
-        {
-            int counter = 0;
-            string line;
+        //static void readFilemurid()
+        //{
+        //    int counter = 0;
+        //    string line;
 
-            string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string file = dir + @"\student.txt";
-            StreamReader sr = new StreamReader(file);
-            while ((line = sr.ReadLine()) != null)
-            {
-                Console.WriteLine(line);
-                counter++;
-            }
-            sr.Close();
+        //    string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //    string file = dir + @"\student.txt";
+        //    StreamReader sr = new StreamReader(file);
+        //    while ((line = sr.ReadLine()) != null)
+        //    {
+        //        Console.WriteLine(line);
+        //        counter++;
+        //    }
+        //    sr.Close();
 
-            // Suspend the screen.
-            Console.ReadLine();
+        //    // Suspend the screen.
+        //    Console.ReadLine();
 
-        }*/
+        //}
 
         static void splitString()
         {
