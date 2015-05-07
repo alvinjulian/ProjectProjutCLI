@@ -214,7 +214,7 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tList Murid");
             Console.WriteLine("\t\t\t\t=========\n");
-
+            Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
             //Codingan baca dari file atau ambil langsung dri function
             //readFilemurid();
             splitString();
@@ -231,6 +231,7 @@ namespace ProjectProjutCLI
             string Kelamin = "L";
             Console.WriteLine("\t\t\t\tList Murid Laki-Laki");
             Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
             //method untuk tampilkan murid laki
             filterKelamin(Kelamin);
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
@@ -245,6 +246,7 @@ namespace ProjectProjutCLI
             string Kelamin = "P";
             Console.WriteLine("\t\t\t\tList Murid Perempuan");
             Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
             //method untuk tampilakn murid perempuan
             filterKelamin(Kelamin);
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
