@@ -14,20 +14,23 @@ namespace ProjectProjutCLI
         
         public static void MainBuku()
         {
-            int pilih = 0;
-            menuBuku();
-            do{
+            Int16 pilihBukuMenu = 0;
+
+            do
+            {
+                menuBuku();
                 Console.Write("Masukan pilihan anda : ");
-                pilih = Convert.ToInt32(Console.ReadLine());
-                if(pilih > 0 && pilih < 6)
+                pilihBukuMenu = Convert.ToInt16(Console.ReadLine());
+                if (pilihBukuMenu > 0 && pilihBukuMenu < 6)
                 {
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
                 Console.WriteLine("Tekan sembarang untuk memilih kembali...");
                 Console.ReadLine();
-            }while(pilih <1 || pilih >5);
-            switch(pilih)
+            } while (pilihBukuMenu < 1 || pilihBukuMenu > 5);
+
+            switch (pilihBukuMenu)
             {
                 case 1:
                     tampilkanBukuS();
@@ -41,7 +44,7 @@ namespace ProjectProjutCLI
                 case 4:
                     tampilkanBukuPengarang();
                     break;
-                case 5 :
+                case 5:
                     Program.Main();
                     break;
             }

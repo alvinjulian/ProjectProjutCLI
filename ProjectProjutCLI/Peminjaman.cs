@@ -10,17 +10,21 @@ namespace ProjectProjutCLI
     {
         public static void MainPeminjaman()
         {
-            int pilihan = 0;
-            do{
+            Int16 pilihPinjamMenu = 0;
+            do
+            {
                 printmenuPeminjaman();
-                pilihan = int.Parse(Console.ReadLine());
-                if(pilihan > 0 && pilihan <7)
+                pilihPinjamMenu = Convert.ToInt16(Console.ReadLine());
+                if (pilihPinjamMenu > 0 && pilihPinjamMenu < 7)
                 {
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
-            } while (pilihan < 1 || pilihan > 6);
-            switch(pilihan)
+                Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                Console.ReadLine();
+            } while (pilihPinjamMenu < 1 || pilihPinjamMenu > 6);
+
+            switch (pilihPinjamMenu)
             {
                 case 1:
                     pinjamBuku();
@@ -43,6 +47,7 @@ namespace ProjectProjutCLI
                 default:
                     break;
             }
+            
         }
         static void printmenuPeminjaman()
         {

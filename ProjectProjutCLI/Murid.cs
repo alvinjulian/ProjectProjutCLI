@@ -17,21 +17,23 @@ namespace ProjectProjutCLI
 
         public static void MainMurid()
         {
-            Int16 pilihan = 0;
+            Int16 pilihMuridMenu = 0;
+
             do
             {
                 printmenuMurid();
-                pilihan = Convert.ToInt16(Console.ReadLine());
-                if (pilihan > 0 && pilihan < 6)
+                Console.Write("Masukan pilihan anda : ");
+                pilihMuridMenu = Convert.ToInt16(Console.ReadLine());
+                if (pilihMuridMenu > 0 && pilihMuridMenu < 6)
                 {
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
                 Console.WriteLine("Tekan sembarang untuk memilih kembali...");
                 Console.ReadLine();
-            } while (pilihan < 1 && pilihan > 5);
+            } while (pilihMuridMenu < 1 || pilihMuridMenu > 5);
 
-            switch (pilihan)
+            switch (pilihMuridMenu)
             {
                 case 1:
                     tampilkanMurids();
@@ -49,6 +51,7 @@ namespace ProjectProjutCLI
                     Program.Main();
                     break;
             }
+            
         }
 
         static void printmenuMurid()
