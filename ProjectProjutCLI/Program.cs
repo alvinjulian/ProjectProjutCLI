@@ -14,10 +14,21 @@ namespace ProjectProjutCLI
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-                printMenu();
-                Int16 pilih = 0;
-                Console.Write("Masukan pilihan anda : ");
-                pilih = Convert.ToInt16(Console.ReadLine());
+            Int16 pilih = 0;
+                
+                do{
+                    printMenu();
+                    Console.Write("Masukan pilihan anda : ");
+                    pilih = Convert.ToInt16(Console.ReadLine());
+                    if(pilih >0 && pilih <5)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("Pilihan yang anda masukan salah!");
+                    Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                    Console.ReadLine();
+                }while(pilih <1 || pilih > 4);
+
                 switch (pilih)
                 {
                     case 1:
