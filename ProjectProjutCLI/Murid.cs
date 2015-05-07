@@ -224,12 +224,30 @@ namespace ProjectProjutCLI
 
         static void tampilkanMuridL()
         {
+                       
+            Console.Clear();
+            string Kelamin = "L";
+            Console.WriteLine("\t\t\t\tList Murid Laki-Laki");
+            Console.WriteLine("\t\t\t\t=========\n");
             //method untuk tampilkan murid laki
+            filterKelamin(Kelamin);
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadLine();
+            MainMurid();
         }
 
         static void tampilkanMuridP()
         {
+            
+            Console.Clear();
+            string Kelamin = "P";
+            Console.WriteLine("\t\t\t\tList Murid Perempuan");
+            Console.WriteLine("\t\t\t\t=========\n");
             //method untuk tampilakn murid perempuan
+            filterKelamin(Kelamin);
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadLine();
+            MainMurid();
         }
 
         /*static void readFilemurid()
@@ -266,14 +284,38 @@ namespace ProjectProjutCLI
             while ((line = sr.ReadLine()) != null)
             {
                 string[] result = rgx.Split(line);
-                for (int ctr = 0; ctr < result.Length; ctr++)
-                {
-                    Console.WriteLine("{0}", result[ctr]);
-
-                }
-                Console.Read();
+                //membuat baris list murid
+                Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}",counter+1, result[0], result[1], result[2], result[3]);
+                //Console.Read();
                 //Console.WriteLine(line);
                 counter++;
+            }
+            sr.Close();
+
+        }
+        static void filterKelamin(string Kelamin)
+        {
+            int counter = 0;
+            string line;
+
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\student.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                //membuat baris list murid
+                if (result[2] == Kelamin)
+                {
+                    Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    counter++;
+                }
+                //Console.Read();
+                //Console.WriteLine(line);
+                
             }
             sr.Close();
         }
