@@ -276,7 +276,8 @@ namespace ProjectProjutCLI
 
                 //string uji = result[0];
 
-                if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
+                //if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
+                if(result[4]!="-" && result[3]!="")
                 {
                     Console.WriteLine("Nama buku\t:\t{0}", result[0]);
                     Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
