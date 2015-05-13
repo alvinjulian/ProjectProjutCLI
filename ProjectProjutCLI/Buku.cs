@@ -253,6 +253,7 @@ namespace ProjectProjutCLI
             {
                 Console.WriteLine("Jumlah buku sesuai kata kunci : {0}", counter);
             }
+			sr.Close();
         }
 
         static void lookPinjam()
@@ -296,6 +297,15 @@ namespace ProjectProjutCLI
             {
                 Console.WriteLine("Jumlah buku yang bisa dipinjam : {0}", counter);
             }
+			sr.Close();
         }
+		static void cetakFile(int id, string nama, string pengarang, string edisi)
+		{
+			string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+			StreamWriter cetak = new StreamWriter(file);
+			cetak.WriteLine(id + "\t" + nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-" );
+			cetak.Close();
+		}
     }
 }
