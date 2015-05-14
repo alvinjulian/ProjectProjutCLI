@@ -166,11 +166,12 @@ namespace ProjectProjutCLI
             {
                 string[] result = rgx.Split(line);
                     //Console.WriteLine("{0}", result[ctr]);
-                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
-                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
-                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
-                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
-                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                        Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                        Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                        Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                        Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                        Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                        Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
                 Console.WriteLine();
                 //Console.Read();
                 //Console.WriteLine(line);
@@ -201,13 +202,14 @@ namespace ProjectProjutCLI
 
                 //string uji = result[0];
 
-                    if (Regex.IsMatch(result[0], s, RegexOptions.IgnoreCase))
+                    if (Regex.IsMatch(result[1], s, RegexOptions.IgnoreCase))
                     {
-                        Console.WriteLine("Nama buku\t:\t{0}", result[0]);
-                        Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
-                        Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
-                        Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
-                        Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                        Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                        Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                        Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                        Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                        Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                        Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
                         Console.WriteLine();
                         counter++;
                     }
@@ -241,13 +243,14 @@ namespace ProjectProjutCLI
 
                 //string uji = result[0];
 
-                if (Regex.IsMatch(result[1], s, RegexOptions.IgnoreCase))
+                if (Regex.IsMatch(result[2], s, RegexOptions.IgnoreCase))
                 {
-                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
-                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
-                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
-                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
-                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                    Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                    Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                    //Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                    //Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
                     Console.WriteLine();
                     counter++;
                 }
@@ -285,13 +288,14 @@ namespace ProjectProjutCLI
                 //string uji = result[0];
 
                 //if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
-                if(result[4]!="-" && result[3]!="")
+                if(result[4]!="-" && result[5]!="")
                 {
-                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
-                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
-                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
-                    //Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
-                    //Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                    Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                    Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                    //Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                    //Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
                     Console.WriteLine();
                     counter++;
                 }
@@ -306,16 +310,15 @@ namespace ProjectProjutCLI
             }
 			sr.Close();
         }
-        static void cetakFile(/*int id,*/ string nama, string pengarang, string edisi)
+        static void cetakFile(int id, string nama, string pengarang, string edisi)
         {
-            //string line;
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
             //StreamReader sr = new StreamReader(file);
             using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
             using (StreamWriter sw = new StreamWriter(fs))
             {
-                sw.WriteLine(/*id + "\t" +*/ nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-");
+                sw.WriteLine(id + "\t" + nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-");
             }
         }
         public static void masukBuku()
@@ -323,28 +326,65 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tMemasukan Buku Baru");
             Console.WriteLine("\t\t\t\t=======================\n");
-
-            //int id;
+            int id,cekID=0;
             string judul, pengarang, edisi;
-            //Console.Write("Masukan ID buku:");
-            //id = int.Parse(Console.ReadLine());
+            
+            Console.Write("Masukan ID buku: ");
+            do
+            {
+                id = int.Parse(Console.ReadLine());
+                if (cekNIM(id) == false)
+                {
+                    cekID = 1;
+                    continue;
+                }
+                else
+                {
+                    Console.WriteLine("ID buku yang dimasukan sudah terdaftar!\n Masukan ID buku: ");
+                }
+            } while (cekID<=0);
 
-            Console.Write("Masukkan judul buku:");
+            Console.Write("Masukkan judul buku: ");
             judul = Console.ReadLine();
 
-            Console.Write("Masukkan pengarang buku:");
+            Console.Write("Masukkan pengarang buku: ");
             pengarang = Console.ReadLine();
 
-            Console.Write("Masukkan edisi buku:");
+            Console.Write("Masukkan edisi buku: ");
             edisi = Console.ReadLine();
 
-            cetakFile(/*id,*/judul,pengarang,edisi);
+            cetakFile(id,judul,pengarang,edisi);
 
             Console.Write("Data Buku Berhasil Disimpan!\n");
             Console.Write("Klik sembarang untuk kembali ke menu buku...");
             Console.ReadLine();
             MainBuku();
         }
+        public static bool cekNIM(int nim)
+        {
+            string id;
+            id = nim.ToString();
+            string line;
 
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                //membuat baris list murid
+                if (result[0] == id)
+                {
+                    sr.Close();
+                    return true;
+                }
+
+            }
+            sr.Close();
+            return false;
+        }
     }
 }
