@@ -175,11 +175,11 @@ namespace ProjectProjutCLI
 
                 if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
                 {
-                    Console.WriteLine("Nama buku\t:\t{0}", result[0]);
-                    Console.WriteLine("Pengarang buku\t:\t{0}", result[1]);
-                    Console.WriteLine("Edisi buku\t:\t{0}", result[2]);
-                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[3]);
-                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[4]);
+                    Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
                     Console.WriteLine();
                     counter++;
                 }
