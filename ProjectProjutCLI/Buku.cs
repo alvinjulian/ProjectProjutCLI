@@ -21,14 +21,14 @@ namespace ProjectProjutCLI
                 menuBuku();
                 Console.Write("Masukan pilihan anda : ");
                 pilihBukuMenu = Convert.ToInt16(Console.ReadLine());
-                if (pilihBukuMenu > 0 && pilihBukuMenu < 6)
+                if (pilihBukuMenu > 0 && pilihBukuMenu < 7)
                 {
                     continue;
                 }
                 Console.WriteLine("Pilihan yang anda masukan salah!");
                 Console.WriteLine("Tekan sembarang untuk memilih kembali...");
                 Console.ReadLine();
-            } while (pilihBukuMenu < 1 || pilihBukuMenu > 5);
+            } while (pilihBukuMenu < 1 || pilihBukuMenu > 6);
 
             switch (pilihBukuMenu)
             {
@@ -45,11 +45,16 @@ namespace ProjectProjutCLI
                     tampilkanBukuPengarang();
                     break;
                 case 5:
+                    masukBuku();
+                    break;
+                case 6:
                     Program.Main();
                     break;
             }
             
         }
+
+
 
         public static void menuBuku()
         {
@@ -60,9 +65,11 @@ namespace ProjectProjutCLI
             Console.WriteLine("2. Tampilkan buku yang dipinjam\n");
             Console.WriteLine("3. Tampilkan buku dengan judul tertentu\n");
             Console.WriteLine("4. Tampilan buku dengan pengarang tertentu\n");
-            Console.WriteLine("5. Kembali ke menu utama\n");
+            Console.WriteLine("5. Tambah Buku\n");
+            Console.WriteLine("6. Kembali ke menu utama\n");
             
         }
+
 
         public static void tampilkanBukuS() //Tampilkan semua buku
         {
@@ -261,7 +268,7 @@ namespace ProjectProjutCLI
             string line;
             int counter = 0;
 
-            string s = "-";
+            //string s = "-";
 
             string pattern = @"\t+";
 
@@ -299,13 +306,41 @@ namespace ProjectProjutCLI
             }
 			sr.Close();
         }
-		static void cetakFile(int id, string nama, string pengarang, string edisi)
+		static void cetakFile(/*int id,*/ string nama, string pengarang, string edisi)
 		{
 			string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
 			StreamWriter cetak = new StreamWriter(file);
-			cetak.WriteLine(id + "\t" + nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-" );
+			cetak.WriteLine(/*id + "\t" +*/ nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-" );
 			cetak.Close();
 		}
+        public static void masukBuku()
+        {
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tMemasukan Buku Baru");
+            Console.WriteLine("\t\t\t\t=======================\n");
+
+            //int id;
+            string judul, pengarang, edisi;
+            //Console.Write("Masukan ID buku:");
+            //id = int.Parse(Console.ReadLine());
+
+            Console.Write("Masukkan judul buku:");
+            judul = Console.ReadLine();
+
+            Console.Write("Masukkan pengarang buku:");
+            pengarang = Console.ReadLine();
+
+            Console.Write("Masukkan edisi buku:");
+            edisi = Console.ReadLine();
+
+            cetakFile(/*id,*/judul,pengarang,edisi);
+
+            Console.Write("Data Buku Berhasil Disimpan!\n");
+            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.ReadLine();
+            MainBuku();
+        }
+
     }
 }
