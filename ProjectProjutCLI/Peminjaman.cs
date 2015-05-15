@@ -149,8 +149,9 @@ namespace ProjectProjutCLI
         {
             Console.Clear();
             Console.WriteLine("\t\t\t\tLihat Pinjaman Overdue");
-            Console.WriteLine("\t\t\t\t======================\n");
-            Console.WriteLine("Judul\t Pengarang\t Edisi\t Tanggal Pinjam\t NIM Peminjam ");
+            Console.WriteLine("\t\t\t\t======================\n\n");
+            lookOverDue();
+            
 
             Console.Write("Tekan sembarang untuk kembali ke menu...");
             Console.Read();
@@ -338,6 +339,47 @@ namespace ProjectProjutCLI
                 sr.Close();
                 return true;
             }
-        }        
+        }
+
+        static void lookOverDue()
+        {
+            string line;
+            int counter = 0;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+
+                if (result[4] != "-")
+                {
+                    DateTime duedate = Convert.ToDateTime(result[4]);
+                    DateTime today = DateTime.Today;
+                    if ((duedate - today).TotalDays < 0)
+                    {
+                        Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                        Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                        Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                        Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                        Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                        Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
+                        Console.WriteLine();
+                        counter++;
+                    }
+                }
+            }
+            if (counter == 0)
+            {
+                Console.WriteLine("Tidak ada buku yang overdue!");
+            }
+            else
+            {
+                Console.WriteLine("Jumlah buku yang overdue : {0}", counter);
+            }
+            sr.Close();
+        }
     }
 }
