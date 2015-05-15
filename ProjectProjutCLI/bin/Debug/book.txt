@@ -14,5 +14,3 @@ Secure Coding in C and C++	Robert Seacord	2	-	-
 The C++ Standard library	Nicolai Josuttis	2	-	-
 Thinking in Java	Bruce Eckel	4	5/05/2015	100002
 Java for Noobs		Kelvin	2	-	-
-Law of Ueki		Fujiko Tsubasa	1	-	-
-

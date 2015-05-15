@@ -122,8 +122,7 @@ namespace ProjectProjutCLI
                 //dirubah jadi bentuk int diantara 1 jt hinga 999999
                 if (nim >= 100000 && nim < 1000000)
                 {
-                    if(cekNim(nim)==false)
-                        continue;
+                    continue;
                 }
                 Console.WriteLine("NIM harus 6 digit!\n");
             } while (nim <= 100000 || nim >= 1000000);
@@ -171,25 +170,11 @@ namespace ProjectProjutCLI
             } while (emailIsValid(email) == false);
 
             //codingan nulis ke file
-           cetakFile(nim,nama,jenisK,email);
+            
 
             Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
             MainMurid();
-        }
-        static void cetakFile(int nim, string nama, char jenisK, string email)
-        {
-            //string line;
-            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string file = dir + @"\student.txt";
-
-            //StreamReader sr = new StreamReader(file);
-
-            using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
-            using (StreamWriter sw = new StreamWriter(fs))
-            {
-                sw.WriteLine(nim + "\t" + nama + "\t\t\t" + jenisK + "\t" + email);
-            }
         }
 
         public static bool emailIsValid(string email)
@@ -337,29 +322,6 @@ namespace ProjectProjutCLI
                 
             }
             sr.Close();
-        }
-        public static bool cekNim(int nim)
-        {
-            string line;
-            string id;
-            string pattern = @"\t+";
-            Regex rgx = new Regex(pattern);
-            id = nim.ToString();
-            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string file = dir + @"\student.txt";
-            StreamReader sr = new StreamReader(file);
-            while ((line = sr.ReadLine()) != null)
-            {
-                string[] result = rgx.Split(line);
-                //membuat baris list murid
-                if (result[0] == id)
-                {
-                    sr.Close();
-                    return true;
-                }
-            }
-            sr.Close();
-            return false;
         }
     }
 }
