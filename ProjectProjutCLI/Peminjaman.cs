@@ -187,7 +187,38 @@ namespace ProjectProjutCLI
 
         static void kembaliBuku()
         {
+            string idbuku;
+            Console.Clear();
+            Console.WriteLine("\t\t\t\tMenu Kembali Buku");
+            Console.WriteLine("\t\t\t\t================\n");
+            Console.Write("Masukan id buku : ");
+            idbuku = Console.ReadLine();
+            if (cekBuku2(idbuku) == false)
+            {
+                Console.WriteLine("Apakah buku ini ingin dikembalikan? Y/N ");
+                switch (char.ToUpper(Console.ReadKey().KeyChar))
+                {
+                    case 'Y':
+                        Console.ReadLine();
+                        break;
+                    default:
+                        // selain Y dianggap N
+                        Console.WriteLine("\nPengembalian buku dibatalkan");
+                        Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+                        Console.ReadLine();
+                        MainPeminjaman();
+                        break;
+                }
+                /////// koding mengganti tanggal peminjam  menjadi "-",
 
+                Console.WriteLine("Pengembalian Buku Berhasil!\n");
+                Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+                Console.ReadLine();
+                MainPeminjaman();
+            }
+            Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+            Console.ReadLine();
+            MainPeminjaman();
         }
 
         static void BacaList(int data, string s)
@@ -380,6 +411,58 @@ namespace ProjectProjutCLI
                 Console.WriteLine("Jumlah buku yang overdue : {0}", counter);
             }
             sr.Close();
+        }
+
+        public static bool cekBuku2(string id) //cek buku apakah sudah ada yg pinjam, untuk dikembalikan
+        {
+            string line;
+            int counter = 0;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            int dendahari = 5000;//denda apabila telat per hari
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                //mengecek apakah idbuku benar
+                if (result[0] == id)
+                {
+                    counter++;
+                    //mengecek apakah ada yang pinjam
+                    if (result[4] != "-" && result[5] != "-")
+                    {
+                        DateTime duedate = Convert.ToDateTime(result[4]);
+                        DateTime today = DateTime.Today;
+                        //perhitungan denda
+                        double denda;
+                        denda = (-1 * ((duedate - today).TotalDays)) * dendahari;
+
+                        Console.WriteLine("Judul Buku\t:\t{0}\n", result[1]);
+                        Console.WriteLine("Edisi Buku\t:\t{0}\n", result[3]);
+                        Console.WriteLine("Peminjam \t:\t{0}\n", result[5]);
+                        if(denda<=0)
+                        {
+                            denda = 0;
+                        }
+                        Console.WriteLine("Denda\t\t:\tRp.{0}\n\n", denda);
+                        return false;
+                    }
+                }
+            }
+            if (counter <= 0)
+            {
+                Console.WriteLine("Id Buku tidak terdaftar!\n");
+                sr.Close();
+                return true;
+            }
+            else
+            {
+                sr.Close();
+                Console.WriteLine("Buku tak ada yang pinjam!\n");
+                return true;
+            }
         }
     }
 }
