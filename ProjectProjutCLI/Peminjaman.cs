@@ -225,7 +225,7 @@ namespace ProjectProjutCLI
             }
         }
 
-        public static bool cekBuku(string id)
+        public static bool cekBuku(string id) //cek buku apakah sudah ada yg pinjam atau tidak, buad menu pinjam buku
         {
             string line;
             int counter = 0;
@@ -269,7 +269,7 @@ namespace ProjectProjutCLI
             }
         }
 
-        public static bool cekNIM2(int nimcek)
+        public static bool cekNIM2(int nimcek) //cek kketersedian nim yg mau pinjam
         {
             string nim;
             nim = nimcek.ToString();
@@ -295,7 +295,7 @@ namespace ProjectProjutCLI
             sr.Close();
             return false;
         }
-        public static bool cektanggal(int nimcek)
+        public static bool cektanggal(int nimcek) //cek nim, apakahh nim tersebut ada overdue peminjaman buku
         {
             string nim;
             nim = nimcek.ToString();
@@ -341,7 +341,7 @@ namespace ProjectProjutCLI
             }
         }
 
-        static void lookOverDue()
+        static void lookOverDue() // membaca dan melihat buku yang overdue dan dibuat list
         {
             string line;
             int counter = 0;
