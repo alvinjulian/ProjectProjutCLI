@@ -308,11 +308,17 @@ namespace ProjectProjutCLI
         }
 		static void cetakFile(/*int id,*/ string nama, string pengarang, string edisi)
 		{
-			string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            //string line;
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
-			StreamWriter cetak = new StreamWriter(file);
-			cetak.WriteLine(/*id + "\t" +*/ nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-" );
-			cetak.Close();
+			
+            //StreamReader sr = new StreamReader(file);
+
+            using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                sw.WriteLine(/*id + "\t" +*/ nama + "\t\t" + pengarang + "\t" + edisi + "\t-\t-");
+            }
 		}
         public static void masukBuku()
         {
