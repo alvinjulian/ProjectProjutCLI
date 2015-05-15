@@ -154,27 +154,22 @@ namespace ProjectProjutCLI
 
         }
 
-        static void BacaList(int data,string s)
+        static void BacaList(int data, string s)
         {
             string line;
             int counter = 0;
-
             string pattern = @"\t+";
-
             Regex rgx = new Regex(pattern);
-
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
             StreamReader sr = new StreamReader(file);
-
             while ((line = sr.ReadLine()) != null)
             {
                 string[] result = rgx.Split(line);
-
                 //string uji = result[0];
-
-                if (Regex.IsMatch(result[4], s, RegexOptions.IgnoreCase))
+                if (Regex.IsMatch(result[5], s, RegexOptions.IgnoreCase))
                 {
+                    Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
                     Console.WriteLine("Nama buku\t:\t{0}", result[1]);
                     Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
                     Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
