@@ -267,26 +267,6 @@ namespace ProjectProjutCLI
             MainMurid();
         }
 
-        //static void readFilemurid()
-        //{
-        //    int counter = 0;
-        //    string line;
-
-        //    string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        //    string file = dir + @"\student.txt";
-        //    StreamReader sr = new StreamReader(file);
-        //    while ((line = sr.ReadLine()) != null)
-        //    {
-        //        Console.WriteLine(line);
-        //        counter++;
-        //    }
-        //    sr.Close();
-
-        //    // Suspend the screen.
-        //    Console.ReadLine();
-
-        //}
-
         static void splitString()
         {
             int counter = 0;

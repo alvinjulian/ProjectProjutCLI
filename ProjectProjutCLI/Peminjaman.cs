@@ -139,7 +139,7 @@ namespace ProjectProjutCLI
                 //masukin data peminjaman ke dalam file
                 DateTime duedate = (DateTime.Today).AddDays(21);
                 string due = duedate.ToString("dd/MM/yyyy");
-                BookEdit(idbuku,due,nim.ToString());
+                BookEdit(idbuku,due,nim.ToString(),0);
                 copyfile();
                 // laporan
                 laporanPeminjaman(idbuku);
@@ -180,8 +180,29 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t======================\n");
             Console.WriteLine("Masukan NIM Mahasiswa yang ingin ditagih, \nNIM Mahasiswa:");
             tagihNIM = Console.ReadLine();
-            BacaList(4, tagihNIM);
-            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            if (BacaList(tagihNIM) == true)
+            {
+                Console.WriteLine("Apakah buku ini ingin dikembalikan? Y/N ");
+                switch (char.ToUpper(Console.ReadKey().KeyChar))
+                {
+                    case 'Y':
+                        Console.ReadLine();
+                        break;
+                    default:
+                        // selain Y dianggap N
+                        Console.WriteLine("\nPengembalian buku dibatalkan");
+                        Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+                        Console.ReadLine();
+                        MainPeminjaman();
+                        break;
+                }
+                //nulis ke file bahwa peminjaman berhasil
+                BookEdit(tagihNIM, "-", "-", 5);
+                copyfile();
+
+                Console.WriteLine("Pengembalian Buku Berhasil!\n");
+            }
+            Console.Write("Klik sembarang untuk kembali ke menu peminjaman...");
             Console.ReadLine();
             MainPeminjaman();
         }
@@ -211,7 +232,7 @@ namespace ProjectProjutCLI
                         break;
                 }
                 /////// koding mengganti tanggal peminjam  menjadi "-",
-                BookEdit(idbuku,"-","-");
+                BookEdit(idbuku,"-","-",0);
                 copyfile();
 
                 Console.WriteLine("Pengembalian Buku Berhasil!\n");
@@ -224,40 +245,70 @@ namespace ProjectProjutCLI
             MainPeminjaman();
         }
 
-        static void BacaList(int data, string s)
+        static bool BacaList(string s)
         {
             string line;
             int counter = 0;
+            int dendahari = 3000;//denda apabila telat per hari
+            double dendatotal=0.0;
             string pattern = @"\t+";
             Regex rgx = new Regex(pattern);
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
+            string file1 = dir + @"\student.txt";
+            StreamReader sr1 = new StreamReader(file1);
             StreamReader sr = new StreamReader(file);
-            while ((line = sr.ReadLine()) != null)
+            while ((line = sr1.ReadLine()) != null)
             {
-                string[] result = rgx.Split(line);
-                //string uji = result[0];
-                if (Regex.IsMatch(result[5], s, RegexOptions.IgnoreCase))
+                string[] result1 = rgx.Split(line);
+                if(result1[0]==s)
                 {
-                    Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
-                    Console.WriteLine("Nama buku\t:\t{0}", result[1]);
-                    Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
-                    Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
-                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
-                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
-                    Console.WriteLine();
-                    counter++;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        string[] result = rgx.Split(line);
+                        if (Regex.IsMatch(result[5], s, RegexOptions.IgnoreCase))
+                        {
+                            //Nama Murid  Email  Buku yang dipinjam            Jumlah denda
+                            Console.WriteLine("Nama Murid\t:\t{0}", result1[1]);
+                            Console.WriteLine("Email \t\t:\t{0}", result1[3]);
+                            Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                            Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                            DateTime duedate = Convert.ToDateTime(result[4]);
+                            DateTime today = DateTime.Today;
+                            //perhitungan denda
+                            double denda;
+                            denda = (-1 * ((duedate - today).TotalDays)) * dendahari;
+                            if (denda <= 0)
+                            {
+                                denda = 0;
+                            }
+                            Console.WriteLine("Jumlah Denda\t:\tRp.{0}\n", denda);
+                            dendatotal = dendatotal + denda;
+                            Console.WriteLine();
+                            counter++;
+                        }
+                    }
                 }
+                
             }
+            
             if (counter == 0)
             {
                 Console.WriteLine("NIM yang dimaksud tidak meminjam buku!");
+                sr.Close();
+                sr1.Close();
+                return false;
+
             }
             else
             {
+                Console.WriteLine("Total Denda\t\t:\tRp.{0}\n", dendatotal);
                 Console.WriteLine("Jumlah buku yang dipinjam : {0}", counter);
+                sr.Close();
+                sr1.Close();
+                return true;
             }
-            sr.Close();
+            
         }
 
         public static bool cekBuku(string id) //cek buku apakah sudah ada yg pinjam atau tidak, buad menu pinjam buku
@@ -423,7 +474,7 @@ namespace ProjectProjutCLI
             int counter = 0;
             string pattern = @"\t+";
             Regex rgx = new Regex(pattern);
-            int dendahari = 5000;//denda apabila telat per hari
+            int dendahari = 3000;//denda apabila telat per hari
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
             StreamReader sr = new StreamReader(file);
@@ -485,7 +536,7 @@ namespace ProjectProjutCLI
             //Console.ReadKey();
         }
 
-        static void BookEdit(string idbuku,string tanggal,string nimpinjam) //mengganti tanggal dan nim peminjam
+        static void BookEdit(string idbuku,string tanggal,string nimpinjam,int check) //mengganti tanggal dan nim peminjam
         {
             string line;
             string pattern = @"\t+";
@@ -498,7 +549,7 @@ namespace ProjectProjutCLI
             {
                 string[] result = rgx.Split(line);
                 //mengecek apakah idbuku benar, lalu duedate dan nim peminjam jadi "-" lalu masukin ke file
-                if (result[0] == idbuku)
+                if (result[check] == idbuku)
                 {
                    result[4]=tanggal;
                    result[5]=nimpinjam;
@@ -572,5 +623,8 @@ namespace ProjectProjutCLI
             }
             sr.Close();
         }
+    
+    
     }
+
 }
