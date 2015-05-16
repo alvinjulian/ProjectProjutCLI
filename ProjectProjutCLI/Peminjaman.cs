@@ -139,7 +139,10 @@ namespace ProjectProjutCLI
                 MainPeminjaman();
             }
                 //masukin data peminjaman ke dalam file
-
+            DateTime duedate = (DateTime.Today).AddDays(21);
+            string due = duedate.ToString("dd/MM/yyyy");
+                BookEdit(idbuku,due,nim.ToString());
+                copyfile();
 
                 Console.WriteLine("Peminjaman berhasil!!\n");
                 Console.Write("Tekan sembarang untuk kembali ke menu...");
@@ -212,7 +215,7 @@ namespace ProjectProjutCLI
                         break;
                 }
                 /////// koding mengganti tanggal peminjam  menjadi "-",
-                KembaliEdit(idbuku);
+                BookEdit(idbuku,"-","-");
                 copyfile();
 
                 Console.WriteLine("Pengembalian Buku Berhasil!\n");
@@ -486,7 +489,7 @@ namespace ProjectProjutCLI
             //Console.ReadKey();
         }
 
-        static void KembaliEdit(string idbuku)
+        static void BookEdit(string idbuku,string tanggal,string nimpinjam) //mengganti tanggal dan nim peminjam
         {
             string line;
             string pattern = @"\t+";
@@ -501,8 +504,8 @@ namespace ProjectProjutCLI
                 //mengecek apakah idbuku benar, lalu duedate dan nim peminjam jadi "-" lalu masukin ke file
                 if (result[0] == idbuku)
                 {
-                   result[4]="-";
-                   result[5]="-";
+                   result[4]=tanggal;
+                   result[5]=nimpinjam;
                    if (!File.Exists(filecp))
                    {
                        // Create a file to write to. kalau belom ada filenya 
