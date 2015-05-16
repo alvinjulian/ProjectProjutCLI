@@ -375,6 +375,5 @@ namespace ProjectProjutCLI
                 sw.WriteLine(nim + "\t" + nama + "\t\t" + jenisK + "\t" + email);
             }
         }
-
     }
 }

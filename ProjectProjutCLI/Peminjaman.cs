@@ -34,6 +34,8 @@ namespace ProjectProjutCLI
                         break;
                     case "3":
                         tagihOverdue();
+                    //buat coba aj    
+                    //copyfile();
                         break;
                     case "4":
                         tagihMahasiswa();
@@ -210,6 +212,8 @@ namespace ProjectProjutCLI
                         break;
                 }
                 /////// koding mengganti tanggal peminjam  menjadi "-",
+                KembaliEdit(idbuku);
+                copyfile();
 
                 Console.WriteLine("Pengembalian Buku Berhasil!\n");
                 Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
@@ -254,6 +258,7 @@ namespace ProjectProjutCLI
             {
                 Console.WriteLine("Jumlah buku yang dipinjam : {0}", counter);
             }
+            sr.Close();
         }
 
         public static bool cekBuku(string id) //cek buku apakah sudah ada yg pinjam atau tidak, buad menu pinjam buku
@@ -447,6 +452,7 @@ namespace ProjectProjutCLI
                             denda = 0;
                         }
                         Console.WriteLine("Denda\t\t:\tRp.{0}\n\n", denda);
+                        sr.Close();
                         return false;
                     }
                 }
@@ -464,5 +470,81 @@ namespace ProjectProjutCLI
                 return true;
             }
         }
+
+        static void copyfile() //untuk copy isi file dan delete
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\bookcp.txt";
+            string target = dir + @"\book.txt";
+            //copy file di folder yg sama.. hati2 penamaanya yaa
+            System.IO.File.Copy(file, target, true);
+
+            //delete cp nya sekarang
+            File.Delete(file);
+            // Keep console window open in debug mode.
+            //Console.WriteLine("Press any key to exit.");
+            //Console.ReadKey();
+        }
+
+        static void KembaliEdit(string idbuku)
+        {
+            string line;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            string filecp = dir + @"\bookcp.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                //mengecek apakah idbuku benar, lalu duedate dan nim peminjam jadi "-" lalu masukin ke file
+                if (result[0] == idbuku)
+                {
+                   result[4]="-";
+                   result[5]="-";
+                   if (!File.Exists(filecp))
+                   {
+                       // Create a file to write to. kalau belom ada filenya 
+                       using (StreamWriter swnew = File.CreateText(filecp))
+                       {
+                           swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2] + "\t" + result[3] + "\t" + result[4] + "\t" + result[5]);
+                       }
+                   }
+                   //kalau ud ada file yang mau ditulis
+                   else
+                   {
+                       using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
+                       using (StreamWriter sw = new StreamWriter(fs))
+                       {
+                           sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2] + "\t" + result[3] + "\t" + result[4] + "\t" + result[5]);
+                       }
+                   } 
+                }
+                else
+                {
+                    if (!File.Exists(filecp))
+                    {
+                        // Create a file to write to. kalau belom ada filenya 
+                        using (StreamWriter swnew = File.CreateText(filecp))
+                        {
+                            swnew.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2] + "\t" + result[3] + "\t" + result[4] + "\t" + result[5]);
+                        }
+                    }
+                    //kalau ud ada file yang mau ditulis
+                    else
+                    {
+                        using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
+                        using (StreamWriter sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine(result[0] + "\t" + result[1] + "\t" + result[2] + "\t" + result[3] + "\t" + result[4] + "\t" + result[5]);
+                        }
+                    }
+                }
+             }
+            sr.Close();
+            
+          }
+        
     }
 }
