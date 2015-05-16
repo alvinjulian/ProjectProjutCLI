@@ -8,3 +8,7 @@
 100028	Susan Santoso		P	susan_santoso@gmail.com
 100100	Johan Gunawan		L	jgunawan@yahoo.com
 100101	Lenny Setiawati		P	lennysetiawati92@gmail.com
+<<<<<<< HEAD
+=======
+100009	Kelvin		L	kri@ya.co
+>>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9

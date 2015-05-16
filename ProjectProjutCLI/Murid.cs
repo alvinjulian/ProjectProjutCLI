@@ -122,9 +122,26 @@ namespace ProjectProjutCLI
                 //dirubah jadi bentuk int diantara 1 jt hinga 999999
                 if (nim >= 100000 && nim < 1000000)
                 {
+<<<<<<< HEAD
                     continue;
+=======
+                    if (cekNIM(nim) == false)
+                    {
+                        continue;
+                    }
+                    else 
+                    {
+                        Console.WriteLine("NIM sudah terdaftar!\n");
+                        //untuk membuat mengulang memasukan NIM lagi
+                        nim = 0;
+                    }
+
                 }
-                Console.WriteLine("NIM harus 6 digit!\n");
+                else
+                {
+                    Console.WriteLine("NIM harus 6 digit!\n");
+>>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
+                }
             } while (nim <= 100000 || nim >= 1000000);
 
             do
@@ -170,7 +187,11 @@ namespace ProjectProjutCLI
             } while (emailIsValid(email) == false);
 
             //codingan nulis ke file
+<<<<<<< HEAD
             
+=======
+            cetakData(nim, nama, jenisK, email);
+>>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
 
             Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
@@ -323,5 +344,48 @@ namespace ProjectProjutCLI
             }
             sr.Close();
         }
+<<<<<<< HEAD
+=======
+
+        public static bool cekNIM(int nim)
+        {
+            string id;
+            id = nim.ToString();
+            string line;
+
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\student.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                //membuat baris list murid
+                if (result[0] == id)
+                {
+                    sr.Close();
+                    return true;
+                }
+
+            }
+            sr.Close();
+            return false;
+        }
+        static void cetakData(int nim, string nama, char jenisK, string email)
+        {
+            //string line;
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\student.txt";
+            //StreamReader sr = new StreamReader(file);
+            using (FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write))
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                sw.WriteLine(nim + "\t" + nama + "\t\t" + jenisK + "\t" + email);
+            }
+        }
+
+>>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
     }
 }

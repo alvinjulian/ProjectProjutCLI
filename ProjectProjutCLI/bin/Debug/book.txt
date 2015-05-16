@@ -14,6 +14,7 @@ Secure Coding in C and C++	Robert Seacord	2	-	-
 The C++ Standard library	Nicolai Josuttis	2	-	-
 Thinking in Java	Bruce Eckel	4	5/05/2015	100002
 <<<<<<< HEAD
+<<<<<<< HEAD
 Java for Noobs		Kelvin	2	-	-
 <<<<<<< HEAD
 =======
@@ -22,3 +23,6 @@ Law of Ueki		Fujiko Tsubasa	1	-	-
 =======
 >>>>>>> parent of d3d9f49... Udah bisa append text ada di file buku.cs
 >>>>>>> origin/master
+=======
+kel		lel	1	-	-
+>>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
