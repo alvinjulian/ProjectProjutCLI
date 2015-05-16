@@ -275,26 +275,6 @@ namespace ProjectProjutCLI
             MainMurid();
         }
 
-        //static void readFilemurid()
-        //{
-        //    int counter = 0;
-        //    string line;
-
-        //    string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        //    string file = dir + @"\student.txt";
-        //    StreamReader sr = new StreamReader(file);
-        //    while ((line = sr.ReadLine()) != null)
-        //    {
-        //        Console.WriteLine(line);
-        //        counter++;
-        //    }
-        //    sr.Close();
-
-        //    // Suspend the screen.
-        //    Console.ReadLine();
-
-        //}
-
         static void splitString()
         {
             int counter = 0;
@@ -385,7 +365,10 @@ namespace ProjectProjutCLI
                 sw.WriteLine(nim + "\t" + nama + "\t\t" + jenisK + "\t" + email);
             }
         }
+<<<<<<< HEAD
 
 >>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
+=======
+>>>>>>> afa970a76b860f704bd6eecaf1d6461629497658
     }
 }
