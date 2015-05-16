@@ -222,6 +222,7 @@ namespace ProjectProjutCLI
             {
                 Console.WriteLine("Jumlah buku sesuai kata kunci : {0}", counter);
             }
+            sr.Close();
         }
 
         static void lookPengarang(string s)

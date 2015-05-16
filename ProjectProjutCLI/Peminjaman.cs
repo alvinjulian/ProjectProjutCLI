@@ -34,8 +34,6 @@ namespace ProjectProjutCLI
                         break;
                     case "3":
                         tagihOverdue();
-                    //buat coba aj    
-                    //copyfile();
                         break;
                     case "4":
                         tagihMahasiswa();
@@ -139,12 +137,14 @@ namespace ProjectProjutCLI
                 MainPeminjaman();
             }
                 //masukin data peminjaman ke dalam file
-            DateTime duedate = (DateTime.Today).AddDays(21);
-            string due = duedate.ToString("dd/MM/yyyy");
+                DateTime duedate = (DateTime.Today).AddDays(21);
+                string due = duedate.ToString("dd/MM/yyyy");
                 BookEdit(idbuku,due,nim.ToString());
                 copyfile();
+                // laporan
+                laporanPeminjaman(idbuku);
 
-                Console.WriteLine("Peminjaman berhasil!!\n");
+                Console.WriteLine("\nPeminjaman berhasil!!\n");
                 Console.Write("Tekan sembarang untuk kembali ke menu...");
                 Console.Read();
                 MainPeminjaman();
@@ -168,12 +168,8 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tTagih Pinjaman Overdue");
             Console.WriteLine("\t\t\t\t======================\n");
-            Console.WriteLine("Nama Peminjam  : ");
-            Console.WriteLine("Judul Buku     : ");
-            Console.WriteLine("Penulis Buku   : ");
-            Console.WriteLine("Edisi          : ");
-            Console.WriteLine("Hari terlambat : ");
-            Console.WriteLine("Jumlah Denda   : ");
+
+ 
         }
 
         static void tagihMahasiswa()
@@ -548,6 +544,33 @@ namespace ProjectProjutCLI
             sr.Close();
             
           }
-        
+
+        static void laporanPeminjaman(string s)
+        {
+            string line;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+
+                //string uji = result[0];
+
+                if (Regex.IsMatch(result[0], s, RegexOptions.IgnoreCase))
+                {
+                    Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                    Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                    Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
+                    Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
+                    Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
+                    Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
+                   
+                }
+            }
+            sr.Close();
+        }
     }
 }
