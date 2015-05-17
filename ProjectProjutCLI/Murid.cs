@@ -146,7 +146,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
-                if (IsDigitsOnly(nama) == false)
+                if (IsDigitsOnly(nama) == false && nama != "\t"&&!="")
                 {
                     continue;
                 }

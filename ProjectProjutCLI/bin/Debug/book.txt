@@ -1,4 +1,4 @@
-1	C++ Concurrency in Action	Anthony Williams	1	-	-
+﻿1	C++ Concurrency in Action	Anthony Williams	1	-	-
 2	C++ Primer	Stanley Lippman, Jos�e Lajoie, Barbara Moo	5	26/04/2015	100020
 3	C++ Programming Language	Bjarne Stroustrup	4	21/05/2015	100025
 4	Effective Java	Joshua Bloch	2	3/05/2015	100020

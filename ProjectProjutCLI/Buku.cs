@@ -311,7 +311,7 @@ namespace ProjectProjutCLI
             }
 			sr.Close();
         }
-        static void cetakFile(int id, string nama, string pengarang, string edisi)
+        static void cetakFile(string id, string nama, string pengarang, string edisi)
         {
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
@@ -327,32 +327,68 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tMemasukan Buku Baru");
             Console.WriteLine("\t\t\t\t=======================\n");
-            int id,cekID=0;
+            int cekIDbuku=0;
+            string id;
             string judul, pengarang, edisi;
             
             Console.Write("Masukan ID buku: ");
             do
             {
-                id = int.Parse(Console.ReadLine());
-                if (cekNIM(id) == false)
+                id = Console.ReadLine();
+                if (cekID(id) == false && id!=""&&id!="\t")
                 {
-                    cekID = 1;
+                    cekIDbuku = 1;
                     continue;
                 }
                 else
                 {
-                    Console.WriteLine("ID buku yang dimasukan sudah terdaftar!\n Masukan ID buku: ");
+                    Console.WriteLine("ID buku yang dimasukan sudah terdaftar atau tidak Valid!\n Masukan ID buku: ");
                 }
-            } while (cekID<=0);
+            } while (cekIDbuku<=0);
+            cekIDbuku=0;
+            do
+            {
+                Console.Write("Masukkan judul buku: ");
+                judul = Console.ReadLine();
+                if (judul != "" && judul != "\t")
+                {
+                    cekIDbuku = 1;
+                }
+                else
+                {
+                    Console.WriteLine("Judul buku yang dimasukan tidak valid!\n");
+                }
+            } while (cekIDbuku <= 0);
 
-            Console.Write("Masukkan judul buku: ");
-            judul = Console.ReadLine();
+            cekIDbuku = 0;
+            do
+            {
+                Console.Write("Masukkan pengarang buku: ");
+                pengarang = Console.ReadLine();
+                if (pengarang != "" && pengarang != "\t")
+                {
+                    cekIDbuku = 1;
+                }
+                else
+                {
+                    Console.WriteLine("Pengarang buku yang dimasukan tidak valid!\n");
+                }
+            } while (cekIDbuku <= 0);
 
-            Console.Write("Masukkan pengarang buku: ");
-            pengarang = Console.ReadLine();
-
-            Console.Write("Masukkan edisi buku: ");
-            edisi = Console.ReadLine();
+            cekIDbuku = 0;
+            do
+            {
+                Console.Write("Masukkan edisi buku: ");
+                edisi = Console.ReadLine();
+                if (edisi != "" &&edisi!="\t")
+                {
+                    cekIDbuku = 1;
+                }
+                else
+                {
+                    Console.WriteLine("Pengarang buku yang dimasukan tidak valid!\n");
+                }
+            } while (cekIDbuku <= 0);
 
             cetakFile(id,judul,pengarang,edisi);
 
@@ -361,10 +397,9 @@ namespace ProjectProjutCLI
             Console.ReadLine();
             MainBuku();
         }
-        public static bool cekNIM(int nim)
+        public static bool cekID(string nim)
         {
-            string id;
-            id = nim.ToString();
+           
             string line;
 
             string pattern = @"\t+";
@@ -377,7 +412,7 @@ namespace ProjectProjutCLI
             {
                 string[] result = rgx.Split(line);
                 //membuat baris list murid
-                if (result[0] == id)
+                if (result[0] == nim)
                 {
                     sr.Close();
                     return true;
