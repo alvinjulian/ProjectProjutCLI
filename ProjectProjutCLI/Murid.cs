@@ -141,17 +141,18 @@ namespace ProjectProjutCLI
                     Console.WriteLine("NIM harus 6 digit!\n");
                 }
             } while (nim <= 100000 || nim >= 1000000);
-
+            int namabatas = 0;
             do
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
                 if (IsDigitsOnly(nama) == false && nama != "\t"&&nama!="")
                 {
+                    namabatas = 1;
                     continue;
                 }
                 Console.WriteLine("Nama tidak valid!");
-            } while (IsDigitsOnly(nama) == true);
+            } while (namabatas<=0 );
             ///memasukan jenis kelamin 
             do
             {
