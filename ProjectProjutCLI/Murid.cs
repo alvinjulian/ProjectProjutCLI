@@ -122,9 +122,8 @@ namespace ProjectProjutCLI
                 //dirubah jadi bentuk int diantara 1 jt hinga 999999
                 if (nim >= 100000 && nim < 1000000)
                 {
-<<<<<<< HEAD
-                    continue;
-=======
+                   
+
                     if (cekNIM(nim) == false)
                     {
                         continue;
@@ -140,7 +139,6 @@ namespace ProjectProjutCLI
                 else
                 {
                     Console.WriteLine("NIM harus 6 digit!\n");
->>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
                 }
             } while (nim <= 100000 || nim >= 1000000);
 
@@ -187,11 +185,8 @@ namespace ProjectProjutCLI
             } while (emailIsValid(email) == false);
 
             //codingan nulis ke file
-<<<<<<< HEAD
-            
-=======
             cetakData(nim, nama, jenisK, email);
->>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
+
 
             Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
@@ -324,8 +319,6 @@ namespace ProjectProjutCLI
             }
             sr.Close();
         }
-<<<<<<< HEAD
-=======
 
         public static bool cekNIM(int nim)
         {
@@ -365,10 +358,6 @@ namespace ProjectProjutCLI
                 sw.WriteLine(nim + "\t" + nama + "\t\t" + jenisK + "\t" + email);
             }
         }
-<<<<<<< HEAD
 
->>>>>>> 2822df750a30bae2a61d210bfd82145271ed29a9
-=======
->>>>>>> afa970a76b860f704bd6eecaf1d6461629497658
     }
 }
