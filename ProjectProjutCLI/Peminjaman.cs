@@ -257,16 +257,17 @@ namespace ProjectProjutCLI
             string file = dir + @"\book.txt";
             string file1 = dir + @"\student.txt";
             StreamReader sr1 = new StreamReader(file1);
-            StreamReader sr = new StreamReader(file);
-            while ((line = sr1.ReadLine()) != null)
+            
+            while ((line = sr1.ReadLine()) != null) //buka file student, baca perbaris
             {
                 string[] result1 = rgx.Split(line);
-                if(result1[0]==s)
+                if(result1[0]==s) /// cek apakah nim uda sama dengan yg diminta,kalau ktmu  // kalau gk ada dianggap gk pinjem buku
                 {
-                    while ((line = sr.ReadLine()) != null)
+                    StreamReader sr = new StreamReader(file);
+                    while ((line = sr.ReadLine()) != null) ///buka file buku
                     {
                         string[] result = rgx.Split(line);
-                        if (Regex.IsMatch(result[5], s, RegexOptions.IgnoreCase))
+                        if (Regex.IsMatch(result[5], s, RegexOptions.IgnoreCase)) //kalau ada si peminjam dengan nim itu
                         {
                             //Nama Murid  Email  Buku yang dipinjam            Jumlah denda
                             Console.WriteLine("Nama Murid\t:\t{0}", result1[1]);
@@ -287,7 +288,8 @@ namespace ProjectProjutCLI
                             Console.WriteLine();
                             counter++;
                         }
-                    }
+                    } 
+                    sr.Close();
                 }
                 
             }
@@ -295,7 +297,7 @@ namespace ProjectProjutCLI
             if (counter == 0)
             {
                 Console.WriteLine("NIM yang dimaksud tidak meminjam buku!");
-                sr.Close();
+                
                 sr1.Close();
                 return false;
 
@@ -304,7 +306,7 @@ namespace ProjectProjutCLI
             {
                 Console.WriteLine("Total Denda\t\t:\tRp.{0}\n", dendatotal);
                 Console.WriteLine("Jumlah buku yang dipinjam : {0}", counter);
-                sr.Close();
+                
                 sr1.Close();
                 return true;
             }
@@ -432,28 +434,40 @@ namespace ProjectProjutCLI
             string line;
             int counter = 0;
             string pattern = @"\t+";
+            int dendahari = 3000;//denda apabila telat per hari
             Regex rgx = new Regex(pattern);
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string file = dir + @"\book.txt";
+            string file1 = dir + @"\student.txt";
             StreamReader sr = new StreamReader(file);
             while ((line = sr.ReadLine()) != null)
             {
                 string[] result = rgx.Split(line);
-
                 if (result[4] != "-")
                 {
                     DateTime duedate = Convert.ToDateTime(result[4]);
                     DateTime today = DateTime.Today;
                     if ((duedate - today).TotalDays < 0)
                     {
-                        Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
-                        Console.WriteLine("Nama buku\t:\t{0}", result[1]);
-                        Console.WriteLine("Pengarang buku\t:\t{0}", result[2]);
-                        Console.WriteLine("Edisi buku\t:\t{0}", result[3]);
-                        Console.WriteLine("Tanggal Kembali\t:\t{0}", result[4]);
-                        Console.WriteLine("NIM Peminjam\t:\t{0}", result[5]);
-                        Console.WriteLine();
-                        counter++;
+                        StreamReader sr1 = new StreamReader(file1);
+                        while ((line = sr1.ReadLine()) != null) //buka file student, baca perbaris
+                        {
+                            string[] result1 = rgx.Split(line);
+                            if (result[5] == result1[0])
+                            {
+                                Console.WriteLine("Nama Murid\t:\t{0}", result1[1]);
+                                Console.WriteLine("Email \t\t:\t{0}", result1[3]);
+                                Console.WriteLine("ID Buku\t\t:\t{0}", result[0]);
+                                Console.WriteLine("Nama buku\t:\t{0}", result[1]);
+                                //perhitungan denda
+                                double denda;
+                                denda = (-1 * ((duedate - today).TotalDays)) * dendahari;
+                                Console.WriteLine("Jumlah Denda\t:\tRp.{0}\n", denda);
+                                Console.WriteLine();
+                                counter++;
+                            }
+                        }
+                        sr1.Close();
                     }
                 }
             }
@@ -466,6 +480,7 @@ namespace ProjectProjutCLI
                 Console.WriteLine("Jumlah buku yang overdue : {0}", counter);
             }
             sr.Close();
+            
         }
 
         public static bool cekBuku2(string id) //cek buku apakah sudah ada yg pinjam, untuk dikembalikan
