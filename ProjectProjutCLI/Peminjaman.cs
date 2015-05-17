@@ -168,7 +168,26 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tTagih Pinjaman Overdue");
             Console.WriteLine("\t\t\t\t======================\n");
-
+            Console.WriteLine("Apakah semua buku overdue ingin ditagih? Y/N ");
+            switch (char.ToUpper(Console.ReadKey().KeyChar))
+            {
+                case 'Y':
+                    Console.ReadLine();
+                    break;
+                default:
+                    // selain Y dianggap N
+                    Console.WriteLine("\nPenagihan buku dibatalkan");
+                    Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+                    Console.ReadLine();
+                    MainPeminjaman();
+                    break;
+            }
+            //kode menulis buku yg overdue menjadi dianggap dikembalikan result[4] && result[5]=="-"
+            tagihsemua();
+            Console.WriteLine("\nPenagihan buku berhasil");
+            Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
+            Console.ReadLine();
+            MainPeminjaman();
  
         }
 
@@ -638,7 +657,56 @@ namespace ProjectProjutCLI
             }
             sr.Close();
         }
-    
+
+        static void tagihsemua()
+        {
+            string line;
+            int counter = 0;
+            string pattern = @"\t+";
+            Regex rgx = new Regex(pattern);
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string file = dir + @"\book.txt";
+            string file1 = dir + @"\student.txt";
+            StreamReader sr = new StreamReader(file);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] result = rgx.Split(line);
+                if (result[4] != "-")
+                {
+                    DateTime duedate = Convert.ToDateTime(result[4]);
+                    DateTime today = DateTime.Today;
+                    if ((duedate - today).TotalDays < 0)
+                    {
+                        StreamReader sr1 = new StreamReader(file1);
+                        while ((line = sr1.ReadLine()) != null) //buka file student, baca perbaris
+                        {
+                            string[] result1 = rgx.Split(line);
+                            if (result[5] == result1[0])
+                            {
+                                //nulis ke file bahwa sudah dikembalikan
+                                BookEdit(result[0], "-", "-", 0);
+                                sr.Close();
+                                //dicopy dan delete yg bookcp.txt
+                                copyfile();
+                                sr = new StreamReader(file);
+                                counter++;
+                            }
+                        }
+                        sr1.Close();
+                    }
+                }
+            }
+            if (counter == 0)
+            {
+                Console.WriteLine("Tidak ada buku yang overdue!");
+            }
+            else
+            {
+                Console.WriteLine("Jumlah buku yang overdue yang dikembalikan : {0}", counter);
+
+            }
+            sr.Close();
+        }
     
     }
 
