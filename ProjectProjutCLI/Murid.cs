@@ -137,7 +137,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
-                if (IsDigitsOnly(nama) == true && nama!="")
+                if (IsDigitsOnly(nama) == true && nama!="" && nama.Length<=22)
                 {
                     namabatas = 1;
                     continue;
@@ -273,8 +273,16 @@ namespace ProjectProjutCLI
             {
                 string[] result = rgx.Split(line);
                 //membuat baris list murid
-                Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}",counter+1, result[0], result[1], result[2], result[3]);
-                //Console.Read();
+                if (result[1].Length < 8)
+                {
+                    Console.WriteLine("{0}.\t{1}\t{2}\t\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                }
+                else
+                {
+                    Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                
+                }
+                    //Console.Read();
                 //Console.WriteLine(line);
                 counter++;
             }
