@@ -14,16 +14,6 @@ namespace ProjectProjutCLI
 {
     class Murid
     {
-        //public struct MuridBaru
-        //{
-        //    int nim;
-        //    string nama;
-        //    char jenisK;
-        //    string email;
-        //}
-        /// <summary>
-        /// belum beres bkin masukin file.....
-        /// </summary>
         public static void MainMurid()
         {
             string pilihMuridMenu;
@@ -112,18 +102,19 @@ namespace ProjectProjutCLI
             string nama;
             char jenisK;
             string email;
+            string inputnim;
+            bool kondisiNIM;
             Console.Clear();
             Console.WriteLine("\t\t\t\tMasukan Data Murid");
             Console.WriteLine("\t\t\t\t==================\n");
             do
             {
                 Console.Write("Masukan NIM : ");
-                nim = int.Parse(Console.ReadLine());
-                //dirubah jadi bentuk int diantara 1 jt hinga 999999
-                if (nim >= 100000 && nim < 1000000)
+                inputnim = Console.ReadLine();
+                kondisiNIM = int.TryParse(inputnim, out nim);
+                //dirubah jadi bentuk int diantara 1 jt hingga 999999
+                if (kondisiNIM == true && nim >= 100000 && nim < 1000000)
                 {
-                   
-
                     if (cekNIM(nim) == false)
                     {
                         continue;
@@ -138,7 +129,7 @@ namespace ProjectProjutCLI
                 }
                 else
                 {
-                    Console.WriteLine("NIM harus 6 digit!\n");
+                    Console.WriteLine("NIM harus 6 digit angka!\n");
                 }
             } while (nim <= 100000 || nim >= 1000000);
             int namabatas = 0;
@@ -146,7 +137,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
-                if (IsDigitsOnly(nama) == false && nama != "\t"&&nama!="")
+                if (IsDigitsOnly(nama) == true && nama!="")
                 {
                     namabatas = 1;
                     continue;
@@ -216,13 +207,9 @@ namespace ProjectProjutCLI
         }
         public static bool IsDigitsOnly(string str)
         {
-            foreach (char c in str)
             {
-                if (c < '0' || c > '9')
-                    return false;
+                return Regex.IsMatch(str, @"^[a-zA-Z]+$");
             }
-
-            return true;
         }
 
         static void tampilkanMurids()
