@@ -404,7 +404,9 @@ namespace ProjectProjutCLI
                 }
             } while (cekIDbuku <= 0);
 
+            //masukin buku
             cetakFile(id,judul,pengarang,edisi);
+            Sorting.sortingBookID();
 
             Console.Write("Data Buku Berhasil Disimpan!\n");
             Console.Write("Klik sembarang untuk kembali ke menu buku...");

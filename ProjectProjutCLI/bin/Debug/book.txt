@@ -1,4 +1,4 @@
-﻿1	C++ Concurrency in Action	Anthony Williams	1	-	-
+1	C++ Concurrency in Action	Anthony Williams	1	-	-
 2	C++ Primer	Stanley Lippman, Jos�e Lajoie, Barbara Moo	5	26/04/2015	100020
 3	C++ Programming Language	Bjarne Stroustrup	4	21/05/2015	100025
 4	Effective Java	Joshua Bloch	2	3/05/2015	100020
@@ -9,9 +9,9 @@
 9	Java Generics and Collections	Maurice Naftalin, Philip Wadler	1	20/04/2015	100026
 10	Java Performance	Charlie Hunt, Binu John	1	-	-
 11	Java Puzzlers: Traps, Pitfalls, and Corner Cases	Joshun Bloch, Neal Gafter	1	23/04/2015	100002
+19	Kelvin	Kelvin	1	-	-
+20	Law of Ueki	2	1	-	-
 12	Real-Time C++	Chris Kormanyos	1	23/05/2015	100020
 13	Secure Coding in C and C++	Robert Seacord	2	-	-
 14	The C++ Standard library	Nicolai Josuttis	2	-	-
 15	Thinking in Java	Bruce Eckel	4	5/05/2015	100002
-19	Kelvin	Kelvin	1	-	-
-20	Law of Ueki	2	1	-	-

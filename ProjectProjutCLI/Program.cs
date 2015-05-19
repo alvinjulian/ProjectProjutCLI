@@ -31,7 +31,8 @@ namespace ProjectProjutCLI
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-
+            Sorting.sortingNIM();
+            Sorting.sortingBookID();
             bool kondisi;
 
             int pilih = 0;

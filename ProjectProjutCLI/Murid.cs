@@ -186,7 +186,8 @@ namespace ProjectProjutCLI
 
             //codingan nulis ke file
             cetakData(nim, nama, jenisK, email);
-
+            // langsung disorting
+            Sorting.sortingNIM();
 
             Console.WriteLine("\n\nData berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
