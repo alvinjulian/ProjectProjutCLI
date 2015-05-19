@@ -57,8 +57,8 @@ namespace ProjectProjutCLI
         static void printmenuPeminjaman()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Peminjaman");
-            Console.WriteLine("\t\t\t\t===============\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tMenu Peminjaman");
+            Console.WriteLine("\t\t\t\t\t\t\t\t===============\n");
             Console.WriteLine("1. Pinjam buku\n");
             Console.WriteLine("2. Lihat buku yang overdue\n");
             Console.WriteLine("3. Tagih buku yang overdue\n");
@@ -75,8 +75,8 @@ namespace ProjectProjutCLI
             //string judul;
             //string edisi;
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Pinjam Buku");
-            Console.WriteLine("\t\t\t\t================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tMenu Pinjam Buku");
+            Console.WriteLine("\t\t\t\t\t\t\t\t================\n");
             Console.Write("Masukan id buku : ");
             idbuku = Console.ReadLine();
             Program.inputlog(idbuku);
@@ -157,8 +157,8 @@ namespace ProjectProjutCLI
         static void lihatOverdue()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tLihat Pinjaman Overdue");
-            Console.WriteLine("\t\t\t\t======================\n\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tLihat Pinjaman Overdue");
+            Console.WriteLine("\t\t\t\t\t\t\t\t======================\n\n");
             lookOverDue();
             
 
@@ -170,8 +170,8 @@ namespace ProjectProjutCLI
         static void tagihOverdue()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tTagih Pinjaman Overdue");
-            Console.WriteLine("\t\t\t\t======================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tTagih Pinjaman Overdue");
+            Console.WriteLine("\t\t\t\t\t\t\t\t======================\n");
             Console.WriteLine("Apakah semua buku overdue ingin ditagih? Y/N ");
             switch (char.ToUpper(Console.ReadKey().KeyChar))
             {
@@ -201,8 +201,8 @@ namespace ProjectProjutCLI
         {
             string tagihNIM = "";
             Console.Clear();
-            Console.WriteLine("\t\t\t\tTagih Pinjaman Mahasiswa Tertentu");
-            Console.WriteLine("\t\t\t\t======================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tTagih Pinjaman Mahasiswa Tertentu");
+            Console.WriteLine("\t\t\t\t\t\t\t\t======================\n");
             Console.WriteLine("Masukan NIM Mahasiswa yang ingin ditagih, \nNIM Mahasiswa:");
             tagihNIM = Console.ReadLine();
             Program.inputlog(tagihNIM);
@@ -239,8 +239,8 @@ namespace ProjectProjutCLI
         {
             string idbuku;
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Kembali Buku");
-            Console.WriteLine("\t\t\t\t================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tMenu Kembali Buku");
+            Console.WriteLine("\t\t\t\t\t\t\t\t================\n");
             Console.Write("Masukan id buku : ");
             idbuku = Console.ReadLine();
             Program.inputlog(idbuku);

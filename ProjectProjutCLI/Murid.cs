@@ -53,8 +53,8 @@ namespace ProjectProjutCLI
         static void printmenuMurid()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\t\t\t\tMenu Murid");
-            Console.WriteLine("\t\t\t\t\t\t\t==========\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tMenu Murid");
+            Console.WriteLine("\t\t\t\t\t\t\t\t==========\n");
             Console.WriteLine("1. Tampilkan semua murid\n");
             Console.WriteLine("2. Tampilkan murid laki-laki\n");
             Console.WriteLine("3. Tampilkan murid perempuan\n");
@@ -107,11 +107,11 @@ namespace ProjectProjutCLI
             string email;
             string inputnim;
             bool kondisiNIM;
-            Console.Clear();
-            Console.WriteLine("\t\t\t\t\t\t\tMasukan Data Murid");
-            Console.WriteLine("\t\t\t\t\t\t\t==================\n");
             do
             {
+                Console.Clear();
+                Console.WriteLine("\t\t\t\t\t\t\tMasukan Data Murid");
+                Console.WriteLine("\t\t\t\t\t\t\t==================\n");            
                 Console.Write("Masukan NIM : ");
                 inputnim = Console.ReadLine();
                 Program.inputlog(inputnim);
@@ -135,6 +135,7 @@ namespace ProjectProjutCLI
                 {
                     Console.WriteLine("NIM harus 6 digit angka!\n");
                 }
+                Console.ReadLine();
             } while (nim <= 100000 || nim >= 1000000);
             int namabatas = 0;
             do

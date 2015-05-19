@@ -64,8 +64,8 @@ namespace ProjectProjutCLI
         public static void menuBuku()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Buku");
-            Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tMenu Buku");
+            Console.WriteLine("\t\t\t\t\t\t\t\t=========\n");
             Console.WriteLine("1. Tampilkan semua buku\n");
             Console.WriteLine("2. Tampilkan buku yang dipinjam\n");
             Console.WriteLine("3. Tampilkan buku dengan judul tertentu\n");
@@ -79,8 +79,8 @@ namespace ProjectProjutCLI
         public static void tampilkanBukuS() //Tampilkan semua buku
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tList Buku");
-            Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tList Buku");
+            Console.WriteLine("\t\t\t\t\t\t\t\t=========\n");
 
             //Codingan baca dari file atau ambil langsung dri function
             readFilebuku();
@@ -94,8 +94,8 @@ namespace ProjectProjutCLI
         {
             string keywordJudul = "";
             Console.Clear();
-            Console.WriteLine("\t\t\t\tList Buku berdasarkan judul");
-            Console.WriteLine("\t\t\t\t===========================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tList Buku berdasarkan judul");
+            Console.WriteLine("\t\t\t\t\t\t\t\t===========================\n");
             
             do
             {
@@ -122,8 +122,8 @@ namespace ProjectProjutCLI
         {
             string keywordPengarang = "";
             Console.Clear();
-            Console.WriteLine("\t\t\t\tList Buku berdasarkan pengarang");
-            Console.WriteLine("\t\t\t\t===============================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tList Buku berdasarkan pengarang");
+            Console.WriteLine("\t\t\t\t\t\t\t\t===============================\n");
             Console.Write("Masukkan nama pengarang:");
             do
             {
@@ -148,8 +148,8 @@ namespace ProjectProjutCLI
         public static void tampilkanBukuPinjam()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tList Buku yang dipinjam");
-            Console.WriteLine("\t\t\t\t=======================\n");
+            Console.WriteLine("\t\t\t\t\t\t\t\tList Buku yang dipinjam");
+            Console.WriteLine("\t\t\t\t\t\t\t\t=======================\n");
 
             //codingan listing buku yang dipinjam
             lookPinjam();
@@ -331,16 +331,18 @@ namespace ProjectProjutCLI
         }
         public static void masukBuku()
         {
-            Console.Clear();
-            Console.WriteLine("\t\t\t\tMemasukan Buku Baru");
-            Console.WriteLine("\t\t\t\t=======================\n");
+
             int cekIDbuku=0;
             string id;
             string judul, pengarang, edisi;
             
-            Console.Write("Masukan ID buku: ");
+            
             do
             {
+                Console.Clear();
+                Console.WriteLine("\t\t\t\t\t\t\t\tMemasukan Buku Baru");
+                Console.WriteLine("\t\t\t\t\t\t\t\t=======================\n");
+                Console.Write("Masukan ID buku: ");
                 id = Console.ReadLine();
                 Program.inputlog(id);
                 if (cekID(id) == false && id!=""&&id!="\t")
@@ -350,7 +352,8 @@ namespace ProjectProjutCLI
                 }
                 else
                 {
-                    Console.WriteLine("ID buku yang dimasukan sudah terdaftar atau tidak Valid!\n Masukan ID buku: ");
+                    Console.WriteLine("ID buku yang dimasukan sudah terdaftar atau tidak Valid!");
+                    Console.ReadLine();
                 }
             } while (cekIDbuku<=0);
             cekIDbuku=0;
