@@ -51,8 +51,8 @@ namespace ProjectProjutCLI
         static void printmenuMurid()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Murid");
-            Console.WriteLine("\t\t\t\t==========\n");
+            Console.WriteLine("\t\t\t\t\t\t\tMenu Murid");
+            Console.WriteLine("\t\t\t\t\t\t\t==========\n");
             Console.WriteLine("1. Tampilkan semua murid\n");
             Console.WriteLine("2. Tampilkan murid laki-laki\n");
             Console.WriteLine("3. Tampilkan murid perempuan\n");
@@ -88,8 +88,8 @@ namespace ProjectProjutCLI
         static void printmenuTambahmurid()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMenu Murid");
-            Console.WriteLine("\t\t\t\t==========\n");
+            Console.WriteLine("\t\t\t\t\t\t\tMenu Murid");
+            Console.WriteLine("\t\t\t\t\t\t\t==========\n");
             Console.WriteLine("1. Masukan data murid\n");
             Console.WriteLine("2. Kembali ke menu utama\n");
             Console.Write("Masukan pilihan anda : ");
@@ -105,8 +105,8 @@ namespace ProjectProjutCLI
             string inputnim;
             bool kondisiNIM;
             Console.Clear();
-            Console.WriteLine("\t\t\t\tMasukan Data Murid");
-            Console.WriteLine("\t\t\t\t==================\n");
+            Console.WriteLine("\t\t\t\t\t\t\tMasukan Data Murid");
+            Console.WriteLine("\t\t\t\t\t\t\t==================\n");
             do
             {
                 Console.Write("Masukan NIM : ");
@@ -180,7 +180,7 @@ namespace ProjectProjutCLI
             cetakData(nim, nama, jenisK, email);
 
 
-            Console.WriteLine("Data berhasil disimpan! Tekan sembarang tombol untuk kembali....");
+            Console.WriteLine("\n\nData berhasil disimpan! Tekan sembarang tombol untuk kembali....");
             Console.ReadLine();
             MainMurid();
         }
@@ -216,14 +216,14 @@ namespace ProjectProjutCLI
         {
             //method untuk tampilkan semua murid
             Console.Clear();
-            Console.WriteLine("\t\t\t\tList Murid");
-            Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("\t\t\t\t\t\t\tList Murid");
+            Console.WriteLine("\t\t\t\t\t\t\t=========\n");
             Console.WriteLine("\t\t\tNo.\tNIM\tNama\t\t\t\t\t\t\tGender\tEmail\n\n");
             //Codingan baca dari file atau ambil langsung dri function
             //readFilemurid();
             splitString();
 
-            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.Write("\n\n\t\t\t\t\t\t\tKlik sembarang untuk kembali ke menu murid...");
             Console.ReadLine();
             MainMurid();
         }
@@ -233,12 +233,12 @@ namespace ProjectProjutCLI
                        
             Console.Clear();
             string Kelamin = "L";
-            Console.WriteLine("\t\t\t\tList Murid Laki-Laki");
-            Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("\t\t\t\t\t\t\tList Murid Laki-Laki");
+            Console.WriteLine("\t\t\t\t\t\t\t====================\n");
             Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
             //method untuk tampilkan murid laki
             filterKelamin(Kelamin);
-            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.Write("\n\n\t\t\t\t\t\t\tKlik sembarang untuk kembali ke menu murid...");
             Console.ReadLine();
             MainMurid();
         }
@@ -248,12 +248,12 @@ namespace ProjectProjutCLI
             
             Console.Clear();
             string Kelamin = "P";
-            Console.WriteLine("\t\t\t\tList Murid Perempuan");
-            Console.WriteLine("\t\t\t\t=========\n");
+            Console.WriteLine("\t\t\t\t\t\t\tList Murid Perempuan");
+            Console.WriteLine("\t\t\t\t\t\t\t====================\n");
             Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
             //method untuk tampilakn murid perempuan
             filterKelamin(Kelamin);
-            Console.Write("Klik sembarang untuk kembali ke menu buku...");
+            Console.Write("\n\n\t\t\t\t\t\t\tKlik sembarang untuk kembali ke menu murid...");
             Console.ReadLine();
             MainMurid();
         }

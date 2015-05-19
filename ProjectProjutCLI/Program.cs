@@ -79,7 +79,5 @@ namespace ProjectProjutCLI
             Console.WriteLine("3. Menu Peminjaman\n");
             Console.WriteLine("4. Exit Program\n");
         }
-
-        public DataTable dt = new DataTable();
     }
 }
