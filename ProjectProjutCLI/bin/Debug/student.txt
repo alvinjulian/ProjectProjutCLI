@@ -15,3 +15,5 @@
 111113	abcdefghijklmnop		L	a@a.c
 111114	abcdefghijklmnopqrstuvwxyz		P	a@k.c
 111100	abcdefghijklmnopqrstuvwxyzabcde		L	a@A.c
+123456	qwertyuiopasdfghjklzxcvbnmqwertyuiopqwertyuiopasdfg		L	a@a.q
+123452	qwertyuiopasdfghjklzxcvbnmqwertyuiopqwertyuiopasdfgqwe		P	1@1.c

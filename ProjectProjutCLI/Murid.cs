@@ -137,7 +137,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
-                if (IsDigitsOnly(nama) == true && nama!="" && nama.Length<=31)
+                if (IsDigitsOnly(nama) == true && nama!="" && nama.Length<=55)
                 {
                     namabatas = 1;
                     continue;
@@ -218,7 +218,7 @@ namespace ProjectProjutCLI
             Console.Clear();
             Console.WriteLine("\t\t\t\tList Murid");
             Console.WriteLine("\t\t\t\t=========\n");
-            Console.WriteLine("No.\tNIM\tNama\t\t\t\tGender\tEmail\n\n");
+            Console.WriteLine("\t\t\tNo.\tNIM\tNama\t\t\t\t\t\t\tGender\tEmail\n\n");
             //Codingan baca dari file atau ambil langsung dri function
             //readFilemurid();
             splitString();
@@ -275,21 +275,35 @@ namespace ProjectProjutCLI
                 //membuat baris list murid
                 if (result[1].Length < 8)
                 {
-                    Console.WriteLine("{0}.\t{1}\t{2}\t\t\t\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
                 }
                 else if (result[1].Length < 16)
                 {
-                    Console.WriteLine("{0}.\t{1}\t{2}\t\t\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
                 }
                 else if (result[1].Length < 24)
                 {
-                    Console.WriteLine("{0}.\t{1}\t{2}\t\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
 
+                }
+                else if (result[1].Length < 31)
+                {
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                }
+                else if (result[1].Length < 39)
+                {
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                }
+                else if (result[1].Length < 47)
+                {
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
                 }
                 else
                 {
-                    Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
-
+                    Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                
                 }
                
                     //Console.Read();
