@@ -235,7 +235,7 @@ namespace ProjectProjutCLI
             string Kelamin = "L";
             Console.WriteLine("\t\t\t\t\t\t\tList Murid Laki-Laki");
             Console.WriteLine("\t\t\t\t\t\t\t====================\n");
-            Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
+            Console.WriteLine("\t\t\tNo.\tNIM\tNama\t\t\t\t\t\t\tGender\tEmail\n\n");
             //method untuk tampilkan murid laki
             filterKelamin(Kelamin);
             Console.Write("\n\n\t\t\t\t\t\t\tKlik sembarang untuk kembali ke menu murid...");
@@ -250,7 +250,7 @@ namespace ProjectProjutCLI
             string Kelamin = "P";
             Console.WriteLine("\t\t\t\t\t\t\tList Murid Perempuan");
             Console.WriteLine("\t\t\t\t\t\t\t====================\n");
-            Console.WriteLine("No.\tNIM\tNama\t\tGender\tEmail\n\n");
+            Console.WriteLine("\t\t\tNo.\tNIM\tNama\t\t\t\t\t\t\tGender\tEmail\n\n");
             //method untuk tampilakn murid perempuan
             filterKelamin(Kelamin);
             Console.Write("\n\n\t\t\t\t\t\t\tKlik sembarang untuk kembali ke menu murid...");
@@ -330,8 +330,38 @@ namespace ProjectProjutCLI
                 //membuat baris list murid
                 if (result[2] == Kelamin)
                 {
-                    Console.WriteLine("{0}.\t{1}\t{2}\t{3}\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
-                    counter++;
+                    if (result[1].Length < 8)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    }
+                    else if (result[1].Length < 16)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    }
+                    else if (result[1].Length < 24)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                    }
+                    else if (result[1].Length < 31)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                    }
+                    else if (result[1].Length < 39)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                    }
+                    else if (result[1].Length < 47)
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t\t\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
+
+                    }
                 }
                 //Console.Read();
                 //Console.WriteLine(line);
