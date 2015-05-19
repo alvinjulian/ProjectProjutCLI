@@ -14,14 +14,18 @@ namespace ProjectProjutCLI
         
         public static void MainBuku()
         {
-            Int16 pilihBukuMenu = 0;
+            int pilihBukuMenu = 0;
+            bool kondisi;
+            string pilih;
 
             do
             {
                 menuBuku();
                 Console.Write("Masukan pilihan anda : ");
-                pilihBukuMenu = Convert.ToInt16(Console.ReadLine());
-                if (pilihBukuMenu > 0 && pilihBukuMenu < 7)
+                //pilihBukuMenu = Convert.ToInt16(Console.ReadLine());
+                pilih = Console.ReadLine();
+                kondisi = int.TryParse(pilih, out pilihBukuMenu);
+                if (kondisi==true && pilihBukuMenu > 0 && pilihBukuMenu < 7)
                 {
                     continue;
                 }

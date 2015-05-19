@@ -45,8 +45,8 @@ namespace ProjectProjutCLI
                     {
                         continue;
                     }
-                    Console.WriteLine("Pilihan yang anda masukan salah!");
-                    Console.WriteLine("Tekan sembarang untuk memilih kembali...");
+                    Console.WriteLine("\n\t\t\t\t\t\t\t\t\tPilihan yang anda masukan salah!");
+                    Console.WriteLine("\t\t\t\t\t\t\t\tTekan sembarang untuk memilih kembali...");
                     Console.ReadLine();
                 }while(pilih <1 || pilih > 4);
 
@@ -72,8 +72,8 @@ namespace ProjectProjutCLI
         static void printMenu()
         {
             Console.Clear();
-            Console.WriteLine("\t\t\t\tSistem Perpustakaan");
-            Console.WriteLine("\t\t\t\t===================");
+            Console.WriteLine("\t\t\t\t\t\t\t\tSistem Perpustakaan");
+            Console.WriteLine("\t\t\t\t\t\t\t\t===================");
             Console.WriteLine("1. Menu Murid\n");
             Console.WriteLine("2. Menu Buku\n");
             Console.WriteLine("3. Menu Peminjaman\n");
