@@ -12,3 +12,6 @@
 100021	Alvin		L	al@a.c
 100022	David		L	dapid@sur.co
 111111	a		P	a@a.c
+111113	abcdefghijklmnop		L	a@a.c
+111114	abcdefghijklmnopqrstuvwxyz		P	a@k.c
+111100	abcdefghijklmnopqrstuvwxyzabcde		L	a@A.c
