@@ -24,6 +24,7 @@ namespace ProjectProjutCLI
                 Console.Write("Masukan pilihan anda : ");
                 //pilihBukuMenu = Convert.ToInt16(Console.ReadLine());
                 pilih = Console.ReadLine();
+                Program.inputlog(pilih);
                 kondisi = int.TryParse(pilih, out pilihBukuMenu);
                 if (kondisi==true && pilihBukuMenu > 0 && pilihBukuMenu < 7)
                 {
@@ -100,6 +101,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukkan kata-kata judul buku:");
                 keywordJudul = Console.ReadLine();
+                Program.inputlog(keywordJudul);
                 if(keywordJudul != "")
                 {
                     continue;
@@ -126,6 +128,7 @@ namespace ProjectProjutCLI
             do
             {
                 keywordPengarang = Console.ReadLine();
+                Program.inputlog(keywordPengarang);
                 Console.WriteLine();
                 if (keywordPengarang != "")
                 {
@@ -339,6 +342,7 @@ namespace ProjectProjutCLI
             do
             {
                 id = Console.ReadLine();
+                Program.inputlog(id);
                 if (cekID(id) == false && id!=""&&id!="\t")
                 {
                     cekIDbuku = 1;
@@ -354,6 +358,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukkan judul buku: ");
                 judul = Console.ReadLine();
+                Program.inputlog(judul);
                 if (judul != "" && judul != "\t")
                 {
                     cekIDbuku = 1;
@@ -369,6 +374,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukkan pengarang buku: ");
                 pengarang = Console.ReadLine();
+                Program.inputlog(pengarang);
                 if (pengarang != "" && pengarang != "\t")
                 {
                     cekIDbuku = 1;
@@ -384,6 +390,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukkan edisi buku: ");
                 edisi = Console.ReadLine();
+                Program.inputlog(edisi);
                 if (edisi != "" &&edisi!="\t")
                 {
                     cekIDbuku = 1;

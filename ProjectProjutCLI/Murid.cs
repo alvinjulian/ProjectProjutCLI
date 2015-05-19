@@ -22,6 +22,8 @@ namespace ProjectProjutCLI
             {
                 printmenuMurid();
                 pilihMuridMenu = Console.ReadLine();
+                Program.inputlog(pilihMuridMenu);
+                Program.inputlog(pilihMuridMenu);
                 switch (pilihMuridMenu)
                 {
                     case "1":
@@ -68,6 +70,7 @@ namespace ProjectProjutCLI
             {
                 printmenuTambahmurid();
                 pilihan = Console.ReadLine();
+                Program.inputlog(pilihan);
                 switch (pilihan)
                 {
                     case "1":
@@ -111,6 +114,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan NIM : ");
                 inputnim = Console.ReadLine();
+                Program.inputlog(inputnim);
                 kondisiNIM = int.TryParse(inputnim, out nim);
                 //dirubah jadi bentuk int diantara 1 jt hingga 999999
                 if (kondisiNIM == true && nim >= 100000 && nim < 1000000)
@@ -137,6 +141,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Nama : ");
                 nama = Console.ReadLine();
+                Program.inputlog(nama);
                 if (IsDigitsOnly(nama) == true && nama!="" && nama.Length<=55)
                 {
                     namabatas = 1;
@@ -149,6 +154,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Jenis Kelamin (L/P) : ");
                 jenisK = Console.ReadKey().KeyChar;
+                Program.inputlog(jenisK.ToString());
                 jenisK = char.ToUpper(jenisK);
                 Console.WriteLine();
                 switch (jenisK)
@@ -169,6 +175,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("Masukan Email : ");
                 email = Console.ReadLine();
+                Program.inputlog(email);
                 if (emailIsValid(email) == true)
                 {
                     continue;

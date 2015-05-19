@@ -17,6 +17,7 @@ namespace ProjectProjutCLI
             {
                 printmenuPeminjaman();
                 pilihPinjamMenu = Console.ReadLine();
+                Program.inputlog(pilihPinjamMenu);
                 //if (pilihPinjamMenu > 0 && pilihPinjamMenu < 7)
                 //{
                 //    continue;
@@ -78,6 +79,7 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t================\n");
             Console.Write("Masukan id buku : ");
             idbuku = Console.ReadLine();
+            Program.inputlog(idbuku);
             //mengecek buku bisa dipinjam atau tidak
             if (cekBuku(idbuku) == false)
             {
@@ -85,9 +87,11 @@ namespace ProjectProjutCLI
                 switch (char.ToUpper(Console.ReadKey().KeyChar))
                 {
                     case 'Y':
+                        Program.inputlog("Y");
                         break;
                     default :
                         // selain Y dianggap N
+                        Program.inputlog("N");
                         Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
                         Console.ReadLine();
                         MainPeminjaman();
@@ -172,10 +176,12 @@ namespace ProjectProjutCLI
             switch (char.ToUpper(Console.ReadKey().KeyChar))
             {
                 case 'Y':
+                    Program.inputlog("Y");
                     Console.ReadLine();
                     break;
                 default:
                     // selain Y dianggap N
+                    Program.inputlog("N");
                     Console.WriteLine("\nPenagihan buku dibatalkan");
                     Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
                     Console.ReadLine();
@@ -199,15 +205,18 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t======================\n");
             Console.WriteLine("Masukan NIM Mahasiswa yang ingin ditagih, \nNIM Mahasiswa:");
             tagihNIM = Console.ReadLine();
+            Program.inputlog(tagihNIM);
             if (BacaList(tagihNIM) == true)
             {
                 Console.WriteLine("Apakah buku ini ingin dikembalikan? Y/N ");
                 switch (char.ToUpper(Console.ReadKey().KeyChar))
                 {
                     case 'Y':
+                        Program.inputlog("Y");
                         Console.ReadLine();
                         break;
                     default:
+                        Program.inputlog("N");
                         // selain Y dianggap N
                         Console.WriteLine("\nPengembalian buku dibatalkan");
                         Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
@@ -234,16 +243,19 @@ namespace ProjectProjutCLI
             Console.WriteLine("\t\t\t\t================\n");
             Console.Write("Masukan id buku : ");
             idbuku = Console.ReadLine();
+            Program.inputlog(idbuku);
             if (cekBuku2(idbuku) == false)
             {
                 Console.WriteLine("Apakah buku ini ingin dikembalikan? Y/N ");
                 switch (char.ToUpper(Console.ReadKey().KeyChar))
                 {
                     case 'Y':
+                        Program.inputlog("Y");
                         Console.ReadLine();
                         break;
                     default:
                         // selain Y dianggap N
+                        Program.inputlog("N");
                         Console.WriteLine("\nPengembalian buku dibatalkan");
                         Console.WriteLine("\nTekan sembarang untuk kembali ke menu peminjaman");
                         Console.ReadLine();

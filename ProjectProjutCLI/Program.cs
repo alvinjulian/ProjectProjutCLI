@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-
+using System.Reflection;
 namespace ProjectProjutCLI
 {
     class Program
@@ -40,6 +40,7 @@ namespace ProjectProjutCLI
                     printMenu();
                     Console.Write("Masukan pilihan anda : ");
                     pilihan = Console.ReadLine();
+                    inputlog(pilihan);
                     kondisi = int.TryParse(pilihan, out pilih);
                     if(kondisi==true && pilih >0 && pilih <5)
                     {
@@ -78,6 +79,29 @@ namespace ProjectProjutCLI
             Console.WriteLine("2. Menu Buku\n");
             Console.WriteLine("3. Menu Peminjaman\n");
             Console.WriteLine("4. Exit Program\n");
+        }
+        public static void inputlog(string input)
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string filecp = dir + @"\input.txt";
+            //StreamReader sr = new StreamReader(file);
+            if (!File.Exists(filecp))
+            {
+                // Create a file to write to. kalau belom ada filenya 
+                using (StreamWriter swnew = File.CreateText(filecp))
+                {
+                    swnew.WriteLine(input);
+                }
+            }
+            //kalau ud ada file yang mau ditulis
+            else
+            {
+                using (FileStream fs = new FileStream(filecp, FileMode.Append, FileAccess.Write))
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(input);
+                }
+            }
         }
     }
 }
