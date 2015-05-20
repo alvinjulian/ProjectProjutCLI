@@ -31,8 +31,13 @@ namespace ProjectProjutCLI
             ShowWindow(ThisConsole, MAXIMIZE);
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Black;
-            Sorting.sortingNIM();
-            Sorting.sortingBookID();
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string filein = dir + @"\input.txt";
+            if (!File.Exists(filein))
+            {
+                Sorting.sortingNIM();
+                Sorting.sortingBookID();
+            }
             bool kondisi;
 
             int pilih = 0;
@@ -41,7 +46,7 @@ namespace ProjectProjutCLI
                     printMenu();
                     Console.Write("Masukan pilihan anda : ");
                     pilihan = Console.ReadLine();
-                    inputlog(pilihan);
+                    inputlog(pilihan);       
                     kondisi = int.TryParse(pilihan, out pilih);
                     if(kondisi==true && pilih >0 && pilih <5)
                     {
