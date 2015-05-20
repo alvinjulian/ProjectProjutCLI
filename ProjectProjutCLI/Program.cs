@@ -64,6 +64,7 @@ namespace ProjectProjutCLI
                         Peminjaman.MainPeminjaman();
                         break;
                     case 4:
+			inputlog(pilihan);
                         Environment.Exit(0);
                         break;
                     default:
