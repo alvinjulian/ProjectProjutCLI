@@ -1,4 +1,9 @@
-﻿using System;
+﻿//Made by :
+//  Alvin Julian
+//  David A. Soborono
+//  Kelvin Kristianto
+// HCI 2014, Sistem Perpustakaan
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -371,6 +376,7 @@ namespace ProjectProjutCLI
                         Console.WriteLine("\t\t\t{0}.\t{1}\t{2}\t{3}\t\t{4}", counter + 1, result[0], result[1], result[2], result[3]);
 
                     }
+                    counter++;
                 }
                 //Console.Read();
                 //Console.WriteLine(line);

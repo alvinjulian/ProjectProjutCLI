@@ -1,4 +1,9 @@
-﻿using System;
+﻿//Made by :
+//  Alvin Julian
+//  David A. Soborono
+//  Kelvin Kristianto
+// HCI 2014, Sistem Perpustakaan
+using System;
 using System.Data;
 using System.IO;
 using System.Collections.Generic;
