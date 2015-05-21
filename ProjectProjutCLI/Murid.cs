@@ -28,7 +28,6 @@ namespace ProjectProjutCLI
                 printmenuMurid();
                 pilihMuridMenu = Console.ReadLine();
                 Program.inputlog(pilihMuridMenu);
-                Program.inputlog(pilihMuridMenu);
                 switch (pilihMuridMenu)
                 {
                     case "1":
