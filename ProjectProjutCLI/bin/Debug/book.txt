@@ -1,7 +1,7 @@
 23	absurdity @ it's finest	keleus	123	-	-
 1	C++ Concurrency in Action	Anthony Williams	1	11/06/2015	100002
-2	C++ Primer	Stanley Lippman, Jos�e Lajoie, Barbara Moo	5	-	-
-3	C++ Programming Language	Bjarne Stroustrup	4	21/05/2015	100025
+2	C++ Primer	Stanley Lippman, Jos�e Lajoie, Barbara Moo	5	13/06/2015	100002
+3	C++ Programming Language	Bjarne Stroustrup	4	-	-
 4	Effective Java	Joshua Bloch	2	-	-
 5	Head First Design Patterns	Eric Freeman, Elisabeth Robson, Bert Bates, Kathy Sierra	1	3/06/2015	100025
 6	Head First Java	Kathy Sierra, Bert Bates	2	-	-

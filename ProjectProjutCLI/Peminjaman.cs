@@ -116,6 +116,7 @@ namespace ProjectProjutCLI
             {
                 Console.Write("\n\nMasukan NIM mahasiswa : ");
                 nim = int.Parse(Console.ReadLine());
+                Program.inputlog(nim.ToString());
                 //dirubah jadi bentuk int diantara 1 jt hinga 999999
                 if (nim >= 100000 && nim < 1000000)
                 {
