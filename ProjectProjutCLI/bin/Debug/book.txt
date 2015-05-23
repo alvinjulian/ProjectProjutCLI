@@ -1,3 +1,4 @@
+23	absurdity @ it's finest	keleus	123	-	-
 1	C++ Concurrency in Action	Anthony Williams	1	11/06/2015	100002
 2	C++ Primer	Stanley Lippman, Jos�e Lajoie, Barbara Moo	5	-	-
 3	C++ Programming Language	Bjarne Stroustrup	4	21/05/2015	100025
@@ -9,7 +10,7 @@
 9	Java Generics and Collections	Maurice Naftalin, Philip Wadler	1	-	-
 10	Java Performance	Charlie Hunt, Binu John	1	-	-
 11	Java Puzzlers: Traps, Pitfalls, and Corner Cases	Joshun Bloch, Neal Gafter	1	-	-
-19	Kelvin	Kelvin	1	-	-
+19	Kelvin	Kelvin	1	13/06/2015	100002
 20	Law of Ueki	2	1	-	-
 12	Real-Time C++	Chris Kormanyos	1	23/05/2015	100020
 13	Secure Coding in C and C++	Robert Seacord	2	-	-

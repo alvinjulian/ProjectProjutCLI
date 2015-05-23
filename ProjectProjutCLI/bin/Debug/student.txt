@@ -15,5 +15,6 @@
 111111	a		P	a@a.c
 111113	abcdefghijklmnop		L	a@a.c
 111114	abcdefghijklmnopqrstuvwxyz		P	a@k.c
+123123	cabe		L	a@a.a
 123452	qwertyuiopasdfghjklzxcvbnmqwertyuiopqwertyuiopasdfgqwe		P	1@1.c
 123456	qwertyuiopasdfghjklzxcvbnmqwertyuiopqwertyuiopasdfg		L	a@a.q
